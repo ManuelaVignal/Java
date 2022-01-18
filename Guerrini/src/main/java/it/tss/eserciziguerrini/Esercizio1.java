@@ -12,8 +12,10 @@ import javax.swing.JOptionPane;
  */
 public class Esercizio1 {
 
+    //calcolo green pass 
+    
     public static void main(String[] args) {
-
+    
         int myvoto;
         // per essere ammesso almeno 5
         
@@ -77,3 +79,6 @@ public class Esercizio1 {
     
     }
 
+
+        
+        
