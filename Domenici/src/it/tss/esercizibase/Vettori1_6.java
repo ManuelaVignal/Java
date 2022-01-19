@@ -21,7 +21,7 @@ public class Vettori1_6 {
         int num =1;
         
         
-        while (num!=0){
+        while (num!=0 && i<10){
         
           Scanner LettoreS = new Scanner(System.in);
           System.out.println("inserisci il numero:  ");
