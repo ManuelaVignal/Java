@@ -120,9 +120,10 @@ Start
     
 
 
-  if (x non intero || y non intero) then
-             stampa lameno un numero non è interno, impossibile proseguire
-             end 
+  if (y==0) then
+
+             stampa il risultato è 1
+             
 
   end if
    
@@ -133,7 +134,7 @@ Start
   end if
   
         conta =1;
-  	while (conta <= y)) do // l'esponente y determina il numero dei cicli da fare
+  	while (conta <= y) do // l'esponente y determina il numero dei cicli da fare
 
 
       		risultato = x * risultato;
@@ -165,11 +166,7 @@ Start
 
     
 
-  if (x non intero || y non intero) then
-             stampa lameno un numero non è interno, impossibile proseguire
-             end 
 
-  end if
    
 
   if (y < 0) then
@@ -182,7 +179,7 @@ Start
 
                 conta1 = 1;
                 ris = 0;
-                while (conta1 <= y) do
+                while (conta1 <= x) do
 			
 			ris = ris + risultato;
 			conta1 = conta1 + 1;
