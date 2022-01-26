@@ -18,7 +18,7 @@ public class Tool {
 
         float ris = 0; //il metodo ritorna un float ris
         String txnumero = JOptionPane.showInputDialog("inserisci numero");//pop up a video che ritorna un valore String
-        txnumero = txnumero.replaceAll(",", ".");// alla , sosstituisce il .
+        txnumero = txnumero.replaceAll(",", ".");// alla , sosstituisce il, metodo stringa
 
         //metto nel secchiello la variabile che ho inserito a video,uso txnumero come contenitorte
         try {
