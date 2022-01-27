@@ -122,9 +122,6 @@ public class ArraysTools {
 
         }
 
-        for (j = 0; j < numeri.length; j++) {
-            System.out.print(array2[j]);
-        }
         return array2;
 
     }
@@ -137,44 +134,55 @@ public class ArraysTools {
      * @return
      */
     public static int[] unisci(int[] numeri, int[] numeri2) {
-   
-    int i;
-    int j;
-    int k = 0;
-    int array3 [] = new int[20];
-   
 
-    for (i = 0;i< numeri.length; i++){
-    
-         array3[k]= numeri[i];
-         
-        k = k + 1;
-    }
-         for (j=0; j< numeri2.length; j++) {
-    
-           array3[k]= numeri2[j];
-           k = k+1;
+        int dim1 = numeri.length;
+        int dim2 = numeri2.length;
+        int dim3 = dim1 + dim2;
 
-}
+        int[] ar3 = new int[dim3];
 
- for (k = 0; k < array3.length; k++) {
-            System.out.print(array3[k]);
-           
-}
- 
-return array3;
+        for (int i = 0; i < dim1; i++) {
+            ar3[i] = numeri[i];
+
+        }
+        //inserimento secondo array da ultima posizione del primo array
+        for (int i = 0; i < dim2; i++) {
+            ar3[i + dim1] = numeri2[i];
+
+        }
+
+        for (int i = 0; i < dim3; i++) {
+            System.out.print(ar3[i] + ",");
+
+        }
+        System.out.println("");
+        return ar3;
 
     }
-/**
- * ritorna true se numeri1 contiene tutti i valori di numeri 2 nella sequenza
- * corretta
- *
- * @param numeri
- * @param numeri2
- * @return
- */
-public static boolean contieneSequenza(int[] numeri, int[] numeri2) {
-        throw new UnsupportedOperationException("Non ancorai implementato");
+
+    /**
+     * ritorna true se numeri1 contiene tutti i valori di numeri 2 nella
+     * sequenza corretta
+     *
+     * @param numeri
+     * @param numeri2
+     * @return sequenza uguale tra array1 ed array 2 e la restituisce
+     */
+    public static boolean contieneSequenza(int[] numeri, int[] numeri2) {
+
+        boolean trovato = true;
+
+        int dim1 = numeri.length;
+        int dim2 = numeri2.length;
+        
+        for (int i = 0; i < dim1; i++) {
+            for (int j = 0; j < dim2; j++) {
+                if (numeri[i] != numeri[j]) {
+                    trovato=false;
+                }
+            }
+        }
+        return trovato;
     }
 
     /**
