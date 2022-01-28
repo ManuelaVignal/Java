@@ -17,7 +17,8 @@ public class ArraysTools {
             throw new IllegalArgumentException("impossibile calcolare il minimo, array nullo o vuoto");
         }
         for (int i = 0; i < numeri.length; i++) {
-            System.out.print(numeri[i] + ",");
+            String separatore = (i == numeri.length - 1) ? " " : " , ";
+            System.out.print(numeri[i] + separatore);
         }
         System.out.println("");
     }
@@ -110,16 +111,11 @@ public class ArraysTools {
             throw new IllegalArgumentException(" array nullo o vuoto");
         }
 
-        int i;
-        int j = 0;
-
         int[] array2 = new int[numeri.length];
 
-        for (i = 0; i < numeri.length; i++) {
+        for (int i = 0; i < numeri.length; i++) {
 
-            array2[j] = numeri[i];
-            j++;
-
+            array2[i] = numeri[i];
         }
 
         return array2;
@@ -160,41 +156,20 @@ public class ArraysTools {
 
     }
 
-    /**
-     * ritorna true se numeri1 contiene tutti i valori di numeri 2 nella
-     * sequenza corretta
-     *
-     * @param numeri
-     * @param numeri2
-     * @return sequenza uguale tra array1 ed array 2 e la restituisce
-     */
-    public static boolean contieneSequenza(int[] numeri, int[] numeri2) {
-
-        boolean trovato = true;
-
-        int dim1 = numeri.length;
-        int dim2 = numeri2.length;
-        
-        for (int i = 0; i < dim1; i++) {
-            for (int j = 0; j < dim2; j++) {
-                if (numeri[i] != numeri[j]) {
-                    trovato=false;
-                }
-            }
-        }
-        return trovato;
-    }
-
-    /**
-     * ritorna true se numeri1 contiene tutti i valori di numeri 2 in qualunque
-     * sequenza
-     *
-     * @param numeri
-     * @param numeri2
-     * @return
-     */
     public static boolean contieneValori(int[] numeri, int[] numeri2) {
-        throw new UnsupportedOperationException("Non ancorai implementato");
+
+        boolean ris = true;
+
+        for (int n : numeri2) {
+            if (ricerca(numeri, n) == false) {
+                ris = false;
+                break;
+
+            }
+
+        }
+        return ris;
+
     }
 
     /**
@@ -204,8 +179,65 @@ public class ArraysTools {
      * @param numeri2
      * @return
      */
-    public static boolean intersezione(int[] numeri, int[] numeri2) {
-        throw new UnsupportedOperationException("Non ancorai implementato");
+    public static int[] intersezione(int[] numeri, int[] numeri2) {
+
+        int[] ris = {};
+        for (int n : numeri) {
+            if (ricerca(ris, n) == false && ricerca(numeri2, n) == true) {
+                int[] tmp = new int[1];
+                tmp[0] = n;
+                ris = unisci(ris, tmp);
+
+            }
+
+        }
+
+        return ris;
     }
 
+    public static int indexOf(int[] numeri, int n) {
+        return indexOf(0, numeri, n);
+    }
+
+    //ritorna indice dell'elemento trovato altrimenti -1
+    public static int indexOf(int start, int[] numeri, int n) {
+       
+        for (int idx = start; idx < numeri.length; idx++) {
+
+            if (numeri[idx] == n) {
+                return idx;
+            }
+
+        }
+        return -1;
+    }
+
+    public static boolean contieneSequenza(int[] numeri, int[] numeri2) {
+
+        if (numeri2.length == 0) {
+            return false;
+        }
+
+        if (numeri2.length > numeri.length) {
+            return false;
+        }
+        boolean ris= false;
+        int n = numeri2[0];
+        int start =indexOf(numeri,n);
+        while (start != -1 && !ris){
+            
+            ris = true;
+        
+        for (int i=0;i<numeri2.length; i++){
+            if (numeri[start+i]!= numeri2[i]){
+            break;
+            
+            }
+        }
+        
+        start = indexOf(start +1,numeri,n);
+        
+        } 
+        return true;
+    }
 }

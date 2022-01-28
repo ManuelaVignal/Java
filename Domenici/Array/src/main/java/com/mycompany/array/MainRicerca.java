@@ -29,10 +29,16 @@ public class MainRicerca {
         ArraysTools.copia(input);
         ArraysTools.stampa(input);
         ArraysTools.ordinamento(input);
+        ArraysTools.stampa(input);
         ArraysTools.unisci(input, input2);
-        ArraysTools.contieneSequenza(input,input2);
+        ArraysTools.contieneValori(input,input2);
         ArraysTools.stampa(input);
         ArraysTools.stampa(input2);
+        ArraysTools.intersezione(input,input2);
+        ArraysTools.indexOf(0,input, 5);
+        ArraysTools.contieneSequenza(input, input2);
+        ArraysTools.contieneValori(input, input2);
+        
     }
 
     /**
