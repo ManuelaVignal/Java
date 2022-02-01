@@ -27,11 +27,9 @@ public class GestioneScuola {
         Alunno a1 =new Alunno("vignal","manuela");
         String oktel =genio.checkTel("0125---12478 ","+44");
         Alunno a2 =new Alunno(oktel,"tss@libero.it","vignal","manuela");
-        a1.stampaInfo();
-        a2.stampaInfo();
-        c1.insertAlunno(a2,0);
         c1.insertAlunno(a1);
-        
+        c1.insertAlunno(a2);
+        c1.stampaRegistro();
     }
     
 }

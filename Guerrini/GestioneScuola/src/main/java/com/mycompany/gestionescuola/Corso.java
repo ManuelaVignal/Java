@@ -64,6 +64,17 @@ public class Corso {
         registro[pos]=alunno;
     }  
     
+      void stampaRegistro(){
+        int pos=0; for (int i=0;i<registro.length;i++){
+            if (registro[i]==null)
+                break;
+            else
+               registro[i].stampaInfo();
+            
+        }
+      }
+      
+      
     //area metodi o capacità, abilità
     void stampaInfo() {
         
