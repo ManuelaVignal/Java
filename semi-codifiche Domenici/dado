@@ -1,0 +1,66 @@
+
+punteggio =leggi input;
+
+int ris1 =0;
+int ris2 =0;
+
+
+
+ while (ris1 != punteggio && ris2 != punteggio) do
+
+  d1=giocatore 1 lancia il dado (numero casuale)
+  
+
+  d2=giocatore 2 lancia il dado (numero casuale)
+  
+  
+
+    if  d1>d2 then
+   
+        ris1++
+	stampa mano vinta da d1
+    else
+
+        ris2++
+	stampa mano vionta da d2
+ end while
+
+  if (ris>ris2) stampo ha vinto il giocatore 1
+
+    else  ha vinto il giocatore 2
+
+  end if
+
+//banco con i soldi con un solo giocatore
+
+
+soldi=leggi input;
+
+int ris1 =0;
+int ris2 =0;
+
+
+
+ while (soldi>0) do
+
+  db = banco lancia il dado (numero casuale)
+  
+
+  dg = giocatore lancia il dado (numero casuale)
+
+	stampa dg e db
+  
+  
+
+    if  (dg>db) then
+   
+      	soldi++;
+	stampa mano vinta dal giocatore.
+	
+    else
+
+        soldi --;
+	stampa mano vinta dal banco
+ end while
+
+  
