@@ -12,7 +12,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Giocatore g = new Giocatore(10,15,3);
+        //CREO OGGETTO GIOCATORE E DADO NEL MAIN
+        
+        Giocatore g = new Giocatore(10,15,5);
         Dado dadoG = new Dado(6);
         Dado dadoB = new Dado(6);
         int conta = 1;
@@ -30,6 +32,8 @@ public class Main {
             }
             conta ++;
         } while (g.isContinua());
+    
+   
     }
 
     private static void stampaMano(int conta, int lancioG, int lancioB) {
