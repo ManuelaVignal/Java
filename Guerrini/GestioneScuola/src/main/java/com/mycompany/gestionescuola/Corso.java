@@ -165,4 +165,31 @@ public class Corso {
         System.out.println("Link corso:" + link);
         System.out.println("--------------------------------\n\n");
     }
+
+   String  getInfo() {
+
+       String ris="";
+        ris += "\n---------------Scheda corso-----";
+        ris += "\nNome corso:" + nomecorso;
+        ris += "\nDurata corso:" + durataore;
+        ris += "\nDescrizione corso:" + descrizione;
+        ris += "\nData inizio corso:" + datainizio.toString();
+        ris += "\nLink corso:" + link + "\n";
+        
+        return ris;
+   }
+   
+   //ritrona una CSV con i corsi
+   //deve tornare nome corso;durataore;descrizione;data inizio e link separati da punto e virgola
+   //ritorna stringa CSV, siamo in excel, campi...
+   
+  
+   
+   String  getCSV() {
+
+       String ris="";
+       
+        ris += nomecorso + ";" + durataore + ";" + datainizio.toString() + ";" + descrizione + ";" + link +"\n";
+        return ris;
+   }
 }

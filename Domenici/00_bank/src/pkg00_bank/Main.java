@@ -15,11 +15,19 @@ public class Main {
      */
     public static void main(String[] args) {
         
-    ContoCorrenteConEstrattoConto cc=new ContoCorrenteConEstrattoConto("alfonso");
+    ContoCorrenteConEstrattoConto cc=new ContoCorrenteConEstrattoConto("Alfonso");
         cc.deposito(100);
         cc.prelievo(20); 
-        System.out.println("intestatario: " +  cc.getIntestatario() + "saldo: " + cc.getSaldo());
+       
         System.out.println("cc.getMovimenti" + cc.getMovimenti());
+        System.out.println("intestatario: " + cc.getIntestatario());
+        System.out.println("saldo: " + cc.getSaldo());
+        cc.deposito(200);
+        cc.prelievo(40); 
+       
+         System.out.println("cc.getMovimenti" + cc.getMovimenti());
+         System.out.println("intestatario: " +  cc.getIntestatario());
+         System.out.println("saldo: " + cc.getSaldo());
     }
     
 }
