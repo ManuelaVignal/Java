@@ -52,7 +52,6 @@ public class WinGestione extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txDataInizio = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
-        txNomeCorso = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         btnCreaCorso = new javax.swing.JButton();
         lblMsg = new javax.swing.JLabel();
@@ -61,6 +60,7 @@ public class WinGestione extends javax.swing.JFrame {
         idCorsoupdate = new javax.swing.JTextField();
         btnselcorso = new javax.swing.JButton();
         btnupdatecorso = new javax.swing.JButton();
+        txNomeCorso = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,12 +89,6 @@ public class WinGestione extends javax.swing.JFrame {
 
         jLabel4.setText("Data inizio(31/01/22):");
 
-        txNomeCorso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txNomeCorsoActionPerformed(evt);
-            }
-        });
-
         jLabel5.setText("linkcorso");
 
         btnCreaCorso.setText("crea corso");
@@ -121,6 +115,12 @@ public class WinGestione extends javax.swing.JFrame {
         btnupdatecorso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnupdatecorsoActionPerformed(evt);
+            }
+        });
+
+        txNomeCorso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txNomeCorsoActionPerformed(evt);
             }
         });
 
@@ -155,8 +155,13 @@ public class WinGestione extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(46, 46, 46)
+                                        .addComponent(txNomeCorso, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -172,11 +177,6 @@ public class WinGestione extends javax.swing.JFrame {
                                 .addComponent(idCorsoupdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)))))
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(508, Short.MAX_VALUE)
-                    .addComponent(txNomeCorso, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(22, 22, 22)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +185,11 @@ public class WinGestione extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1)
-                        .addGap(37, 37, 37)
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txNomeCorso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
@@ -217,11 +219,6 @@ public class WinGestione extends javax.swing.JFrame {
                             .addComponent(idCorsoupdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnupdatecorso))
                         .addGap(50, 50, 50))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(50, 50, 50)
-                    .addComponent(txNomeCorso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(373, Short.MAX_VALUE)))
         );
 
         pack();
@@ -277,7 +274,7 @@ public class WinGestione extends javax.swing.JFrame {
 
         //recupero un corso per volta ed estraggo info tipo string
         //aggiungo info ad un testo generico che poi setto in display
-        String testoDisplay = "nomecorso;durataore:descrizione;data inizio:link\n";
+        String testoDisplay = "nomecorso; durataore; descrizione; datainizio; link\n";
         for (int i = 0; i < listacorsi.size(); i++) {
 
             Corso c = listacorsi.get(i);//recupero un corso alla volta
@@ -350,10 +347,6 @@ public class WinGestione extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txLinkcorsoActionPerformed
 
-    private void txNomeCorsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNomeCorsoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txNomeCorsoActionPerformed
-
     private void btnCreaCorsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaCorsoActionPerformed
         // TODO add your handling code here:
         //Recuperiamo i dati dall'interfaccia
@@ -424,11 +417,15 @@ public class WinGestione extends javax.swing.JFrame {
         Corso newcorso = new Corso(nc, durata, a, m, d);//creo il nuovo corso oggetto
         newcorso.setDescrizione(des);
         newcorso.setLink(link);
-        listacorsi.set(id, newcorso);// alla lista aggiungo il nuovo corso
+        listacorsi.set(id, newcorso);
         showCorsi();
         salvaCorsiCSV();
 
     }//GEN-LAST:event_btnupdatecorsoActionPerformed
+
+    private void txNomeCorsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txNomeCorsoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txNomeCorsoActionPerformed
 
     /**
      * @param args the command line arguments
