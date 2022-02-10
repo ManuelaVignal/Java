@@ -9,35 +9,51 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * dichiarazione classe Alunno
+ * @author tss
  */
 public class Alunno {
 
-    //area attributi o proprietà
-    private String ntelefono;
-    private String email;
-    private String cognome;
     private String nome;
+    private String cognome;
+    private String telefono = "---";
+    private String mail = "---";
     private LocalDate datainserimento = LocalDate.now();
-    private Esame[]libretto=new Esame[50];
-    public Alunno(){
-    
-    
+    private Esame[] libretto = new Esame[50];
+
+
+    public Alunno() {
     }
 
     public Alunno(String cognome, String nome) {
-        this.cognome = cognome;
         this.nome = nome;
-       
-
+        this.cognome = cognome;
     }
 
-    public Alunno(String ntelefono, String email, String cognome, String nome) {
-        this.ntelefono = ntelefono;
-        this.email = email;
-        this.cognome = cognome;
+    public Alunno(String nome, String cognome, String telefono, String mail) {
         this.nome = nome;
-        this.ntelefono = ntelefono;
+        this.cognome = cognome;
+        this.telefono = telefono;
+        this.mail = mail;
+    }
+
+    
+    public LocalDate getDatainserimento() {
+    return datainserimento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public boolean setNome(String nome) {
+        try {
+            if (nome.length() >= 2) {
+                this.nome = nome;
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public String getCognome() {
@@ -45,7 +61,8 @@ public class Alunno {
     }
 
     public boolean setCognome(String cognome) {
-        cognome = cognome.trim();//toglie tutti i caratteri speciali davanti e dopo il cognome
+
+        cognome = cognome.trim();
         if (cognome.length() >= 2) {
             this.cognome = cognome;
             return true;
@@ -54,41 +71,42 @@ public class Alunno {
         }
     }
 
-    public String getNome() {
-        return nome;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public LocalDate getDatainserimento() {
-        return datainserimento;
+    public String getMail() {
+        return mail;
     }
 
-        public void setLibretto(Esame esame){
-         for(int i=0;i<libretto.length;i++){
-             if(libretto[i]==null){
-             
-             libretto[i]=esame;
-             break;
-             
-             }
-         
-         }
-        
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setLibretto(Esame esame){
+        for(int i=0; i<libretto.length; i++){
+            if(libretto[i]== null){
+                libretto[i]= esame;
+                break;
+            }
         }
+    }
+    
+    
     void stampaInfo() {
-
-        System.out.println("\n\n---------------Scheda corso-----");
-        System.out.println("Nome:" + nome);
-        System.out.println("Cognome:" + cognome);
-        System.out.println("email:" + email);
-        System.out.println("numerotelefono:" + ntelefono);
+        System.out.println("\n\n-------Scheda alunno-------");
+        System.out.println("Il nome dell'alunno è: " + nome);
+        System.out.println("Il cognome dell'alunno è: " + cognome);
+        System.out.println("Il numeri di telefono è: " + telefono);
+        System.out.println("La mail dell'alunno è: " + mail);
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("d/M/yyyy");
         String formattedDate = datainserimento.format(myFormatObj);
-        System.out.println("Data iscizione:" + formattedDate);
-       
-        System.out.println("--------------------------------\n\n");
+        System.out.println("Data iscrizione: " + formattedDate);
+        System.out.println("---------------------------\n\n");
     }
+
 }

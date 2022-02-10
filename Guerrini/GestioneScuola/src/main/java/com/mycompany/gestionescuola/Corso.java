@@ -7,42 +7,48 @@ package com.mycompany.gestionescuola;
 import java.time.LocalDate;
 
 /**
- * dichiarazione classe  Corso con i suoi attributi,costruttori e metodi
- * 
+ *
+ * @author tss
  */
 public class Corso {
 
-    //area attributi o proprietà
+    // area attributi o proprietà
     private String nomecorso;
     private String descrizione;
     private int durataore;
     private LocalDate datainizio;
     private String link = "www.ciacformazione.it";
-    //una struttura per caricare i possibili 30 alunni(registro)
+    // una struttura per caricare i possibili 30 alunni(registro)
     private Alunno[] registro = new Alunno[30];
+    // elenco Alunni da inserire
 
-    //area costruttori con lettera maiuscola iniziale e si chiama esattamente come la classe
+    // costruttori
+    public Corso() {
+        nomecorso = "NN";
+        durataore = 0;
+        descrizione = "---";
+        datainizio = LocalDate.now();
+    }
+
     public Corso(String nomecorso, int durataore) {
-        //di questo oggetto gli assegno...
         this.nomecorso = nomecorso;
         this.durataore = durataore;
         this.descrizione = "---";
         datainizio = LocalDate.now();
     }
 
+    public Corso(String nomecorso, int durataore, int y, int m, int d) {
+        this.nomecorso = nomecorso;
+        this.durataore = durataore;
+        this.descrizione = "---";
+        setDatainizio(y, m, d);
+    }
+
     public Corso(String nomecorso, int durataore, String descrizione) {
-        //di questo oggetto gli assegno...
         this.nomecorso = nomecorso;
         this.durataore = durataore;
         this.descrizione = descrizione;
         datainizio = LocalDate.now();
-    }
-
-    public Corso(String nomecorso,int durataore,int y,int m,int d) {
-        nomecorso = nomecorso;
-        durataore = durataore;
-        descrizione = "---";
-        setDatainizio(y,m,d);
     }
 
     public String getNomecorso() {
@@ -68,7 +74,7 @@ public class Corso {
     }
 
     public void setDurataore(int durataore) {
-        if (durataore > 0 && durataore < 6000) {
+        if (durataore > 0 && durataore <= 5000) {
             this.durataore = durataore;
         }
     }
@@ -77,16 +83,22 @@ public class Corso {
         return datainizio;
     }
 
+    public void setDatainizio(LocalDate datainizio) {
+        this.datainizio = datainizio;
+    }
+
     /**
-     * imposta la data inizio dai 3 parametri numerici
+     * imposta la data testo
      *
-     * @param y int anno
-     * @param m int mese
-     * @param d int giorno
-     * @return variabile booleana
+     * @param datainizio formato YYYY-MM-DD 2022-02-03
      */
-    public boolean setDatainizio(int y, int m, int d) {
+    public boolean setDatainizio(String datainizio) {
         try {
+            int y, m, d;
+            String parts[] = datainizio.split("-"); //data uno String in input, divide le sue parti
+            y = Integer.parseInt(parts[0]);         //a seconda di dove è inserito il "-" e le inserisce
+            m = Integer.parseInt(parts[1]);         //in un array
+            d = Integer.parseInt(parts[2]);
             LocalDate data = LocalDate.of(y, m, d);
             this.datainizio = data;
             return true;
@@ -96,18 +108,16 @@ public class Corso {
     }
 
     /**
-     * imposta la data da formnato data testo
+     * imposta la data inizio dai 3 parametri numerici
      *
-     * @param datainizio formato YYYY-MM-DD 2022-02-02
+     * @param y int anno
+     * @param m int mese
+     * @param d int giorno
+     * @return
      */
-    public boolean setDatainizio(String datainizio) {
+    public boolean setDatainizio(int y, int m, int d) {
         try {
-            int y, m, d;
-            String parts[] = datainizio.split("-");//taglia un pezzo di testo in scatolette
-            y = Integer.parseInt(parts[0]);
-            m = Integer.parseInt(parts[1]);
-            d = Integer.parseInt(parts[2]);
-            LocalDate data = LocalDate.of(y, m, d);//setta la data in base a questi parametri
+            LocalDate data = LocalDate.of(y, m, d);
             this.datainizio = data;
             return true;
         } catch (Exception e) {
@@ -131,22 +141,27 @@ public class Corso {
         this.registro = registro;
     }
 
-    // Elenco  metodi, capacità, abilità ed azioni
     void insertAlunno(Alunno alunno, int pos) {
         registro[pos] = alunno;
+
     }
+
     void insertAlunno(Alunno alunno) {
+
         int pos = 0;
         for (int i = 0; i < registro.length; i++) {
             if (registro[i] == null) {
                 pos = i;
                 break;
             }
+
         }
+
         registro[pos] = alunno;
+
     }
+
     void stampaRegistro() {
-        int pos = 0;
         for (int i = 0; i < registro.length; i++) {
             if (registro[i] == null) {
                 break;
@@ -155,41 +170,39 @@ public class Corso {
             }
         }
     }
-    void stampaInfo() {
 
-        System.out.println("\n\n---------------Scheda corso-----");
-        System.out.println("Nome del corso:" + nomecorso);
-        System.out.println("Durata del corso:" + durataore);
-        System.out.println("Descrizione del corso:" + descrizione);
-        System.out.println("Data inizio del corso:" + datainizio.toString());
-        System.out.println("Link corso:" + link);
-        System.out.println("--------------------------------\n\n");
+    // area metodi o capacità, abilità
+    void stampaInfo() {
+        System.out.println("\n\n-------Scheda corso-------");
+        System.out.println("Nome del corso: " + nomecorso);
+        System.out.println("Durata del corso: " + durataore);
+        System.out.println("Descrizione del corso: " + descrizione);
+        System.out.println("Data inizio del corso: " + datainizio.toString());
+        System.out.println("Link del corso: " + link);
+        System.out.println("--------------------------\n\n");
     }
 
-   String  getInfo() {
-
-       String ris="";
-        ris += "\n---------------Scheda corso-----";
-        ris += "\nNome corso:" + nomecorso;
-        ris += "\nDurata corso:" + durataore;
-        ris += "\nDescrizione corso:" + descrizione;
-        ris += "\nData inizio corso:" + datainizio.toString();
-        ris += "\nLink corso:" + link + "\n";
-        
+    String getInfo() {
+        String ris = "";
+        ris += "-------Scheda corso-------";
+        ris += "\nNome del corso: " + nomecorso;
+        ris += "\nDurata del corso: " + durataore;
+        ris += "\nDescrizione del corso: " + descrizione;
+        ris += "\nData inizio del corso: " + datainizio.toString();
+        ris += "\nLink del corso: " + link + "\n";
         return ris;
-   }
-   
-   //ritrona una CSV con i corsi
-   //deve tornare nome corso;durataore;descrizione;data inizio e link separati da punto e virgola
-   //ritorna stringa CSV, siamo in excel, campi...
-   
-  
-   
-   String  getCSV() {
-
-       String ris="";
-       
-        ris += nomecorso + ";" + durataore + ";" + datainizio.toString() + ";" + descrizione + ";" + link +"\n";
+    }
+    /**
+     * ritorna un csv con i corsi
+     * testo nomeccorso; durata; descrizione; datainizio; link
+     * elenco dati separati da ; e fine linea
+     * @return 
+     */
+    String getCSVInfo() { //
+        String ris = "";
+        //ris += "nomeccorso; durata; descrizione; datainizio; link\n";
+        ris +=  nomecorso + ";" + durataore + ";" + descrizione + ";" + datainizio.toString() + ";" + link + "\n";
         return ris;
-   }
+    }
+
 }

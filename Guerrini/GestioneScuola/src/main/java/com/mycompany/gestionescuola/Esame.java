@@ -7,30 +7,22 @@ package com.mycompany.gestionescuola;
 import java.time.LocalDate;
 
 
-
 /**
  *
- * Dichiarazione classe Esame
+ * @author tss
  */
 public class Esame {
-
-    //attributi
-    
     private String docente;
     private LocalDate data;
     private int voto;
     private String materia;
     private String note;
 
-    
-    // dichiarazione costruttore
-    
-    public Esame(String docente, int voto, String materia) {
-        
+    public Esame(String docente, int voto, String materia){
         this.docente = docente;
         this.voto = voto;
         this.materia = materia;
-        data = LocalDate.now();//data ufficiale di registrazione esame
+        data = LocalDate.now();
     }
 
     public String getDocente() {
@@ -57,6 +49,4 @@ public class Esame {
         this.note = note;
     }
     
-    
-
 }
