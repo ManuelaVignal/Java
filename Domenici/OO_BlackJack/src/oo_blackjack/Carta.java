@@ -20,28 +20,29 @@ public class Carta {
     }
 
     public static enum Nome {
-        ASSO, DUE, TRE, QUATTRO, CONQUE, SEI, SETTE, OTTO, NOVE, DIECI, FANTE, REGINA, RE
+        ASSO, DUE, TRE, QUATTRO, CINQUE, SEI, SETTE, OTTO, NOVE, DIECI, FANTE, REGINA, RE
 
     }
     private final Seme seme;
     private final ArrayList<Integer> valoriPossibili;
     private int valore;
     private final Nome nome;
+    private boolean coperta = true;
 
     public Carta(Seme seme, int valore, Nome nome) {
         this(seme, valore, nome, new ArrayList());
     }
 
-    public Carta(Seme seme, int valore, Nome nome,ArrayList<Integer> valori) {
+    public Carta(Seme seme, int valore, Nome nome, ArrayList<Integer> valori) {
         this.seme = seme;
         this.valore = valore;
-        this.nome=nome;
+        this.nome = nome;
+
         this.valoriPossibili = new ArrayList(valori);
         if (this.valoriPossibili.isEmpty()) {
             this.valoriPossibili.add(valore);
 
         }
-
     }
 
     public int getValore() {
@@ -65,10 +66,19 @@ public class Carta {
         return seme;
     }
 
+    public boolean isCoperta() {
+        return coperta;
+    }
+
+    public void setCoperta(boolean coperta) {
+        this.coperta = coperta;
+    }
+
+    
     @Override
     public String toString() {
 
-        return this.nome.name() + "di" + this.seme.name() + " " + this.valore;
+        return this.coperta ? "???????": this.nome.name() + "di" + this.seme.name() + " " + this.valore;
     }
 
     @Override

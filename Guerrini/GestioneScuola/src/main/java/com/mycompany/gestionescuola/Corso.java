@@ -19,7 +19,7 @@ public class Corso {
     private LocalDate datainizio;
     private String link = "www.ciacformazione.it";
     // una struttura per caricare i possibili 30 alunni(registro)
-    private Alunno[] registro = new Alunno[30];
+    private Alunno[]registro=new Alunno[30];
     // elenco Alunni da inserire
 
     // costruttori
