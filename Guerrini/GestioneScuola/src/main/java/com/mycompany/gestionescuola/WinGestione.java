@@ -25,10 +25,10 @@ public class WinGestione extends javax.swing.JFrame {
         initComponents();
         //comando per impostare la videata centrata a video
         this.setLocationRelativeTo(null);
+        caricaDatiAnagrafica();
         caricaDatiCorsi();
         showCorsi();
-        caricaDatiAnagrafica();
-        
+
     }
 
     /**
@@ -47,6 +47,11 @@ public class WinGestione extends javax.swing.JFrame {
         btnGestAnagrafica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         lblTitolo.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         lblTitolo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -116,6 +121,10 @@ public class WinGestione extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnGestAnagraficaActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        showCorsi();
+    }//GEN-LAST:event_formWindowActivated
     /**
      * aggiorna lista corsi in display
      */
@@ -153,9 +162,10 @@ public class WinGestione extends javax.swing.JFrame {
             Scanner lettore = new Scanner(filecsv);
             //estrarre una riga per volta
             boolean primariga = true;
+            int n = 1;
             while (lettore.hasNextLine()) {
                 String riga = lettore.nextLine();
-                if (!primariga) {
+                if (n > 1) {
                     String[] dati = riga.split(";");
                     //dati[0] nomecorso dati[1] durata etc...
                     String nc = dati[0];
@@ -165,8 +175,23 @@ public class WinGestione extends javax.swing.JFrame {
                     int y = Integer.parseInt(data[0]);
                     int m = Integer.parseInt(data[1]);
                     int d = Integer.parseInt(data[2]);
-                    String link = dati[4];
+                    //problema su lettura vuota, lo split da errore
+                    String link = "";
+                    if (dati.length >= 5) {
+                        link = dati[4];
+                    }
+                    //indice anagrafica
                     Corso c = new Corso(nc, durata, y, m, d);
+                    if (dati.length >= 6) {//se lungo 6 ho gli iscritti
+                        String registro = dati[5];
+                        String[] regID = registro.split(",");//array "1","4"
+                        for (String sid : regID) {
+                            int id = Integer.parseInt(sid);//id=1 id=4...
+                            Anagrafica al = getAlunnoById(id);
+                            c.insertAlunno(al);
+
+                        }
+                    }
                     c.setDescrizione(des);
                     c.setLink(link);
                     // il corso è pronto e lo aggiungiamo alla lista
@@ -255,4 +280,14 @@ public class WinGestione extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitolo;
     private javax.swing.JTextPane tpDisplay;
     // End of variables declaration//GEN-END:variables
+
+    //ritoprna l'anagrafica di quel id come posizione
+    static public  Anagrafica getAlunnoById(int id) {
+        for (Anagrafica a : listaAnagrafiche) {
+            if (id == a.getId_anagrafica()) {
+                return a;
+            }
+        }
+        return null;
+    }
 }

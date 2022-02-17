@@ -5,6 +5,7 @@
 package com.mycompany.gestionescuola;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,21 +13,20 @@ import java.time.LocalDate;
  */
 public class Corso {
 
-    // area attributi o proprietà
+    // area attributi anagrafica e non alunni
     private String nomecorso;
     private String descrizione;
     private int durataore;
     private LocalDate datainizio;
     private String link = "www.ciacformazione.it";
-    // una struttura per caricare i possibili 30 alunni(registro)
-    private Alunno[]registro=new Alunno[30];
-    // elenco Alunni da inserire
+    // creo una nuova Array list di alunni
+    private ArrayList<Anagrafica> registro = new ArrayList<>();
 
     // costruttori
     public Corso() {
         nomecorso = "NN";
         durataore = 0;
-        descrizione = "---";
+        descrizione = "NN";
         datainizio = LocalDate.now();
     }
 
@@ -40,7 +40,7 @@ public class Corso {
     public Corso(String nomecorso, int durataore, int y, int m, int d) {
         this.nomecorso = nomecorso;
         this.durataore = durataore;
-        this.descrizione = "---";
+        this.descrizione = "NN";
         setDatainizio(y, m, d);
     }
 
@@ -59,6 +59,14 @@ public class Corso {
         if (nomecorso.length() > 0 && nomecorso.length() < 120) {
             this.nomecorso = nomecorso;
         }
+    }
+
+    public ArrayList<Anagrafica> getRegistro() {
+        return registro;
+    }
+
+    public void setRegistro(ArrayList<Anagrafica> registro) {
+        this.registro = registro;
     }
 
     public String getDescrizione() {
@@ -133,56 +141,41 @@ public class Corso {
         this.link = link;
     }
 
-    public Alunno[] getRegistro() {
-        return registro;
-    }
-
-    public void setRegistro(Alunno[] registro) {
-        this.registro = registro;
-    }
-
-    void insertAlunno(Alunno alunno, int pos) {
-        registro[pos] = alunno;
+    void updateAlunno(Anagrafica alunno, int pos) {
+        registro.set(pos, alunno);
 
     }
 
-    void insertAlunno(Alunno alunno) {
+    //controllo se ho già inserito un alunno in anagrafica per non creare i doppioni in lista
+    boolean insertAlunno(Anagrafica alunno) {
+        int ida = alunno.getId_anagrafica();
 
-        int pos = 0;
-        for (int i = 0; i < registro.length; i++) {
-            if (registro[i] == null) {
-                pos = i;
-                break;
+        for (Anagrafica al : registro) {
+            if (al.getId_anagrafica() == ida) {
+                return false;
             }
-
+//aggiunge il nuovo tizio nella lista alunni
         }
-
-        registro[pos] = alunno;
+        registro.add(alunno);
+        return true;
 
     }
-
-    void stampaRegistro() {
-        for (int i = 0; i < registro.length; i++) {
-            if (registro[i] == null) {
-                break;
-            } else {
-                registro[i].stampaInfo();
-            }
-        }
-    }
-
     // area metodi o capacità, abilità
+
     void stampaInfo() {
+
         System.out.println("\n\n-------Scheda corso-------");
         System.out.println("Nome del corso: " + nomecorso);
         System.out.println("Durata del corso: " + durataore);
         System.out.println("Descrizione del corso: " + descrizione);
         System.out.println("Data inizio del corso: " + datainizio.toString());
         System.out.println("Link del corso: " + link);
+        //stampaRegistro();
         System.out.println("--------------------------\n\n");
     }
 
     String getInfo() {
+
         String ris = "";
         ris += "-------Scheda corso-------";
         ris += "\nNome del corso: " + nomecorso;
@@ -192,17 +185,36 @@ public class Corso {
         ris += "\nLink del corso: " + link + "\n";
         return ris;
     }
+
     /**
-     * ritorna un csv con i corsi
-     * testo nomeccorso; durata; descrizione; datainizio; link
-     * elenco dati separati da ; e fine linea
-     * @return 
+     * ritorna un csv con i corsi testo nomeccorso; durata; descrizione;
+     * datainizio; link elenco dati separati da ; e fine linea
+     *
+     * @return
      */
-    String getCSVInfo() { //
+    String getCSVInfo() {
+
         String ris = "";
         //ris += "nomeccorso; durata; descrizione; datainizio; link\n";
-        ris +=  nomecorso + ";" + durataore + ";" + descrizione + ";" + datainizio.toString() + ";" + link + "\n";
+        String lr = "";
+        for (Anagrafica al : registro) {
+            lr = al.getId_anagrafica() + ",";
+
+        }
+        if (lr.length() > 0) {
+            lr = lr.substring(0, lr.length() - 1);
+        }
+        ris += nomecorso + ";" + durataore + ";" + descrizione + ";" + datainizio.toString() + ";" + link + ";" + lr + "\n";
         return ris;
     }
 
+    public boolean isAlunno(int id) {
+        for (Anagrafica a : registro) {
+            if (a.getId_anagrafica() == id) {
+                return true;
+            }
+
+        }
+        return false;
+    }
 }

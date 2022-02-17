@@ -78,7 +78,6 @@ public class WinDialogAnagrafica extends javax.swing.JDialog {
         jScrollPane1.setViewportView(lstAnagrafica);
 
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblID.setText("ID lista");
 
         jLabel2.setText("cognome:");
 
@@ -221,7 +220,7 @@ public class WinDialogAnagrafica extends javax.swing.JDialog {
             int index = lstAnagrafica.getSelectedIndex();
             //appendere l'anagrafica nell'elenco della scuola
             //vado in modifica elemento a con il comando set dentro la lista 
-            WinGestione.listaAnagrafiche.set(index,a);
+            WinGestione.listaAnagrafiche.set(index, a);
         }
 
         refreshLista();
@@ -235,13 +234,13 @@ public class WinDialogAnagrafica extends javax.swing.JDialog {
     private void lstAnagraficaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstAnagraficaValueChanged
         //seleziono elemento dalla lista
         int index = lstAnagrafica.getSelectedIndex();
-        if (index ==-1){
-        //niente di selezionato
-        pulisci();
-        return;
-        
+        if (index == -1) {
+            //niente di selezionato
+            pulisci();
+            return;
+
         }
-        
+
         Anagrafica a = WinGestione.listaAnagrafiche.get(index);
         lblID.setText("" + a.getId_anagrafica());
         txCognome.setText(a.getCognome());
@@ -251,19 +250,41 @@ public class WinDialogAnagrafica extends javax.swing.JDialog {
     }//GEN-LAST:event_lstAnagraficaValueChanged
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
-       //guartdo id e se è diverso da -1 lo cancello
-       int index= lstAnagrafica.getSelectedIndex();
-       if(index==-1) return;
-       //titolo finestra Elimina Anagrafica, okay cancella
-       //appare a video a finestra la schermata se vuoi eliminare
-       int input= JOptionPane.showConfirmDialog(null,"Confermi l'eliminazione?","ELIMINA Anagrafica",JOptionPane.OK_CANCEL_OPTION);
-       //se ho cliccato ok , il pulsante è uguale a zero
-       if(input==0){
-       WinGestione.listaAnagrafiche.remove(index);
-       salvaAnagraficaCSV();
-       refreshLista();
-       }
+        //guartdo id e se è diverso da -1 lo cancello
+
+        int index = lstAnagrafica.getSelectedIndex();
+        if (index == -1) {
+            return;
+        }
+        int id = WinGestione.listaAnagrafiche.get(index).getId_anagrafica();
+        //guardo se uno è iscritto per cancellarlo
+        boolean ok = true;
+        for (Corso c : WinGestione.listacorsi) {
+            if (c.isAlunno(id) == true) {
+                ok = false;
+                break;
+            }
+
+        }
+
+        if (ok) {
+            //titolo finestra Elimina Anagrafica, okay cancella
+            //appare a video a finestra la schermata se vuoi eliminare
+            int input = JOptionPane.showConfirmDialog(null, "Confermi l'eliminazione?", "ELIMINA Anagrafica", JOptionPane.OK_CANCEL_OPTION);
+            //se ho cliccato ok , il pulsante è uguale a zero
+            if (input == 0) {
+
+                WinGestione.listaAnagrafiche.remove(index);
+                salvaAnagraficaCSV();
+                refreshLista();
+
+
     }//GEN-LAST:event_btnDelActionPerformed
+        } else {
+            JOptionPane.showInternalMessageDialog(null, "alunni iscritti al corso");
+        }
+
+    }
 
     /**
      * @param args the command line arguments

@@ -168,7 +168,6 @@
     <Component class="javax.swing.JLabel" name="lblID">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="ID lista"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txCognome">
