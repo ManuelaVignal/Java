@@ -32,15 +32,14 @@ public class Main {
         biblioteca.addBook(libro1);
         biblioteca.addBook(libro2);
         biblioteca.addBook(libro3);
-      
-        
+       
+
         biblioteca.loanBook(libro3);
         TimeUnit.MINUTES.sleep(1);
         biblioteca.loanBook(libro1);
         biblioteca.printLoan();
         biblioteca.returnBook(libro2);
         biblioteca.printLoan();
-        
 
     }
 
