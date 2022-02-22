@@ -318,7 +318,7 @@ public class WinGestioneCorso extends javax.swing.JFrame {
     private void salvaCorsi() {
         // recupero un corso per volta
         // estraggo info tipo String
-        // aggiungo info a un testo generico che poi setto in display
+        // aggiungo info a un testo generico che poi setto in displaysiCSV();
         String testoDisplay = "";
         for (int i = 0; i < WinGestione.listacorsi.size(); i++) {
             // recupero un corso per volta

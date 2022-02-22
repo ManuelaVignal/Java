@@ -461,7 +461,7 @@ public class winDialogCorsi extends javax.swing.JDialog {
         // recupero un corso per volta
         // estraggo info tipo String
         // aggiungo info a un testo generico che poi setto in display
-        String testoDisplay = "nomeccorso;durata;descrizione;datainizio;link;lista id alunni;\n";
+        String testoDisplay = "nomeccorso;durata;descrizione;datainizio;link;lista id alunni\n";
         for (int i = 0; i < listacorsi.size(); i++) {
             // recupero un corso per volta
             Corso c = WinGestione.listacorsi.get(i); //get(i) sarebbe listacorsi[i] in un array normale;
