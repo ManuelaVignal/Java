@@ -12,7 +12,7 @@ public class Scontrino {
 
     private String id_prodotto;
     private int quanti;
-    private float prezzo_ivato;
+    private float prezzo_ivato;//prezzo con iva
     private final double ALIQUOTA_IVA = 0.22;
 
     public Scontrino(String id_prodotto, int quanti, float prezzo_ivato) {
@@ -45,13 +45,12 @@ public class Scontrino {
         this.prezzo_ivato = prezzo_ivato;
     }
 
-    public double getPrezzoNetto(double prezzo) {
+    /*public double getPrezzoNetto(double prezzo) {
         return prezzo_ivato / (1 + ALIQUOTA_IVA);
-    }
-
+    }*/
     public double getIva(double prezzo) {
 
-        return prezzo_ivato * ALIQUOTA_IVA;
+        return prezzo * ALIQUOTA_IVA;
 
     }
 
@@ -60,7 +59,8 @@ public class Scontrino {
         return prezzo + getIva(prezzo);
 
     }
-        String getInfo() {
+
+    String getInfo() {
 
         String ris = "";
         ris += "-------Scheda scontrino-------";
@@ -69,6 +69,12 @@ public class Scontrino {
         ris += "\n quanti: " + quanti;
 
         return ris;
+
+    }
+
+    String getCSVInfo1() {
+
+        return id_prodotto + ";" + quanti + ";" + prezzo_ivato + "\n";
 
     }
 }

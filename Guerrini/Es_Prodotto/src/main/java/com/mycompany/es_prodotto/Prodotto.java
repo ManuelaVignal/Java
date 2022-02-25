@@ -15,7 +15,7 @@ public class Prodotto {
 
     private String nome_prodotto;
     private String id_prodotto;
-    private float prezzo;
+    private float prezzo;//prezzo netto
 
     public Prodotto(String nome_prodotto, String id_prodotto, float prezzo) {
         this.nome_prodotto = nome_prodotto;
