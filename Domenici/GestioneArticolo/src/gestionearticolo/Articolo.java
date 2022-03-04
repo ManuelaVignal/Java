@@ -14,5 +14,6 @@ public interface Articolo {
 
     public double getPrezzo();
 
+    @Override
     public String toString();
 }

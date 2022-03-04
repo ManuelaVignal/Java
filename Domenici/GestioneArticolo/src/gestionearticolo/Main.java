@@ -24,6 +24,7 @@ public class Main {
         c.getArticoliSottoPrezzo(20);
 
         System.out.println(c.toString());
+        
 
     }
 }

@@ -13,10 +13,11 @@ import java.util.stream.Collectors;
 /**
  *
  * @author tss
+ * @param <E>
  */
 public class Catalogo< E extends Articolo> implements Iterable {
 
-    public List<E> articoli = new ArrayList<>();
+    private final List<E> articoli = new ArrayList<>();
 
     public void aggiungiArticolo(E art) {
 
@@ -25,21 +26,26 @@ public class Catalogo< E extends Articolo> implements Iterable {
     }
 
     public List<E> getArticoliSottoPrezzo(double prezzo) {
-        return articoli.stream().filter(v -> v.getPrezzo() < prezzo).collect(Collectors.toList());
+
+        return articoli.stream()
+                .filter(v -> v.getPrezzo() < prezzo)
+                .collect(Collectors.toList());
 
     }
 
+    @Override
     public String toString() {
 
-        String ris = "";
-        ris += "---------Scheda Catalogo-------\n";
-        for (E art : articoli) {
-            ris += art.toString();
+        // return articoli.stream().map(Articolo::toString).collect(Collectors.joining("/n"));
+        StringBuilder risultato = new StringBuilder();
+        for (E t : articoli) {
+            risultato.append("\n").append(t.toString());
         }
-        ris += "---------Fine scheda Catalogo------\n";
+        return risultato.toString();
+    }
 
-        return ris;
-
+    public List<E> getArticoli() {
+        return new ArrayList<>();
     }
 
     @Override

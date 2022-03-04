@@ -12,11 +12,12 @@ import java.util.Objects;
  */
 public class Mobile implements Articolo {
 
-    private double prezzo;
-    private String nome;
+    private final double prezzo;
+    private final String nome;
     private int larghezza;
     private int altezza;
     private int profondita;
+    
 
     public Mobile(int larghezza, int altezza, int profondita, double prezzo, String nome) {
         this.larghezza = larghezza;
@@ -47,6 +48,32 @@ public class Mobile implements Articolo {
     public double getPrezzo() {
         return prezzo;
 
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + (int) (Double.doubleToLongBits(this.prezzo) ^ (Double.doubleToLongBits(this.prezzo) >>> 32));
+        hash = 83 * hash + Objects.hashCode(this.nome);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Mobile other = (Mobile) obj;
+        if (Double.doubleToLongBits(this.prezzo) != Double.doubleToLongBits(other.prezzo)) {
+            return false;
+        }
+        return Objects.equals(this.nome, other.nome);
     }
 
     @Override
