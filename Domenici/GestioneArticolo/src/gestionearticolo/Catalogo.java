@@ -44,8 +44,8 @@ public class Catalogo< E extends Articolo> implements Iterable {
         return risultato.toString();
     }
 
-    public List<E> getArticoli() {
-        return new ArrayList<>();
+   public List<E> getArticoli() {
+        return new ArrayList<>(articoli);
     }
 
     @Override

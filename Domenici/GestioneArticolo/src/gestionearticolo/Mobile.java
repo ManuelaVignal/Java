@@ -12,11 +12,12 @@ import java.util.Objects;
  */
 public class Mobile implements Articolo {
 
-    private final double prezzo;
+   
     private final String nome;
     private int larghezza;
     private int altezza;
     private int profondita;
+    private final double prezzo;
     
 
     public Mobile(int larghezza, int altezza, int profondita, double prezzo, String nome) {

@@ -17,11 +17,16 @@ public class Main {
 
         Catalogo<Mobile> c = new Catalogo();
         
+        ProvaMobile p=new ProvaMobile();
+        
         c.aggiungiArticolo(m1);
         c.aggiungiArticolo(m2);
         c.aggiungiArticolo(m3);
         c.getArticoliSottoPrezzo(10);
         c.getArticoliSottoPrezzo(20);
+        
+        System.out.println(p.scegliMobile(c, 60, 50, 50, 70));
+        
 
         System.out.println(c.toString());
         
