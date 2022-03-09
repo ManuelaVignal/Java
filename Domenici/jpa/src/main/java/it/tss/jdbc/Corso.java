@@ -4,6 +4,7 @@
  */
 package it.tss.jdbc;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -19,12 +20,12 @@ import javax.persistence.Table;
  *
  * @author tss
  */
-//definire il mapping
+//definire sempre le ANNOTAZIONI PER I DATA BASE
 @Entity
 @Table(name = "t_corsi")
-
-public class Corso {
-
+public class Corso implements Serializable {
+    
+//CAPO CHIAVE PER FORZA PER IL DATA BASE RELAZIONALE
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     
@@ -49,9 +50,6 @@ public class Corso {
     @Column(name = "datacreazione")
     private LocalDate creatoil;
 
-    public Corso() {
-        
-    }
 
     public Long getId() {
         return id;
