@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
+import javax.json.JsonObject;
 import javax.ws.rs.BadRequestException;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -26,7 +28,7 @@ public class Ping {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String ping(@QueryParam("language") String ln) {
+    public String ping (@DefaultValue("it")@QueryParam("language") String ln) {
 
         if (ln == null) {
             //return "ping-ok!" + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);

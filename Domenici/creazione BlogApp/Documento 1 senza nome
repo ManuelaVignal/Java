@@ -1,0 +1,22 @@
+
+
+                                                                                    BLOGApp
+
+            < Realizzare un semplice blog personale con le seguenti funzionalità: >
+
+creare le classi java che mi servono sotto il progetto entity, abbiamo creato la classe user.
+
+
+- Possibilità per un utente di registrarsi con i seguenti dati: nome,cognome,e-mail, password e data di nascita.
+
+- Un utente registrato, può effettuare la login per gestire i propri Post: creazione,modifica ed eliminazione(aggiungere commenti).
+
+- Un Post è composto da : data, autore, titolo,testo,files collegati,tags collegati.
+
+. Chiunque può vedere l'elenco dei post e ricercare per tag
+
+
+
+
+
+
