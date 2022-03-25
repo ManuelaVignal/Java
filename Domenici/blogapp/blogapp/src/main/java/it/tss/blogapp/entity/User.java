@@ -6,12 +6,16 @@ package it.tss.blogapp.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -22,29 +26,32 @@ import javax.persistence.Table;
 public class User extends BaseEntity {
 
     //5 prorpietà dell'utente
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonbProperty(value="first_name")
+    @NotBlank
     @Column(name = "first_name", nullable = false)
     private String firstname;
 
+     @JsonbProperty(value="last_name")
+    @NotBlank
     @Column(name = "last_name", nullable = false)
     private String lastName;
-
+    
+    @NotBlank
+    @Email
     @Column(nullable = false)
     private String email;
 
+    @NotBlank
+    @Size(min = 4)
     @Column(nullable = false)
     private String pwd;
-    
-    
-    //niente costruttore
-    
-    //inserire metodi get-setter-hash-code e toString
 
+    //niente costruttore
+    //inserire metodi get-setter-hash-code e toString
     public Long getId() {
         return id;
     }
