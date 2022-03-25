@@ -7,6 +7,7 @@ package it.tss.blogapp.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,21 +26,16 @@ import javax.validation.constraints.Size;
 @Table(name = "user")
 public class User extends BaseEntity {
 
-    //5 prorpietà dell'utente
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @JsonbProperty(value="first_name")
+    @JsonbProperty(value = "first_name")
     @NotBlank
     @Column(name = "first_name", nullable = false)
     private String firstname;
 
-     @JsonbProperty(value="last_name")
+    @JsonbProperty(value = "last_name")
     @NotBlank
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    
+
     @NotBlank
     @Email
     @Column(nullable = false)
@@ -52,14 +48,6 @@ public class User extends BaseEntity {
 
     //niente costruttore
     //inserire metodi get-setter-hash-code e toString
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getFirstname() {
         return firstname;
     }
@@ -84,6 +72,7 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
+    @JsonbTransient
     public String getPwd() {
         return pwd;
     }
@@ -93,30 +82,8 @@ public class User extends BaseEntity {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final User other = (User) obj;
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
     public String toString() {
-        return "User{" + "id=" + id + ", firstname=" + firstname + ", lastName=" + lastName + ", email=" + email + ", pwd=" + pwd + '}';
+        return "User{" + "firstname=" + firstname + ", lastName=" + lastName + ", email=" + email + ", pwd=" + pwd + '}';
     }
 
 }

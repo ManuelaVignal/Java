@@ -20,31 +20,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "comment")
-public class Comment extends BaseEntity{
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    @ManyToOne(optional=false)
+public class Comment extends BaseEntity {
+
+    @ManyToOne(optional = false)
     private User author;
-    
-    
+
     @Column(nullable = false)
     private String msg;
-    
-    
-    
-    @ManyToOne(optional=false)
+
+    @ManyToOne(optional = false)
     private Post post;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public User getAuthor() {
         return author;
@@ -71,30 +56,9 @@ public class Comment extends BaseEntity{
     }
 
     @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Comment other = (Comment) obj;
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
     public String toString() {
-        return "Comment{" + "id=" + id + ", author=" + author + ", msg=" + msg + ", post=" + post + '}';
+        return "Comment{" + "author=" + author + ", msg=" + msg + ", post=" + post + '}';
     }
-        
+
+
 }

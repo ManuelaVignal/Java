@@ -4,11 +4,12 @@
  */
 package it.tss.blogapp.control;
 
-import it.tss.blogapp.entity.User;
+import it.tss.blogapp.entity.Comment;
+import it.tss.blogapp.entity.Post;
+import it.tss.blogapp.entity.Tag;
 import java.util.List;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -19,32 +20,29 @@ import javax.transaction.Transactional;
  */
 @RequestScoped
 @Transactional(Transactional.TxType.REQUIRED)
-public class UserStore {
-
-    //metodi che interagiscono con il data base e ci vuole EntityManager
-    //connessione data base gestita da wildfly, basta scrivere una annotazione per connettersi al data base
-    @PersistenceContext
+public class CommentStore {
+    
+      @PersistenceContext
     EntityManager em;
 
     //metodo che ritorna tutti gli utenti
-    public List<User> all() {
-        return em.createQuery("select e from User e order by e.lastName").getResultList();
+    public List<Comment> all() {
+        return em.createQuery("select e from Comment e order by e.author").getResultList();
 
     }
 
-    public Optional<User> find(Long id) {
-        User found = em.find(User.class, id);
+    public Optional<Comment> find(Long id) {
+        Comment found = em.find(Comment.class, id);
         return found == null ? Optional.empty() : Optional.of(found);
 
     }
 
-    public User save(User entity) {
+    public Comment save(Comment entity) {
         return em.merge(entity);
 
     }
 
     public void delete(Long id) {
-        em.remove(em.getReference(User.class, id));
+        em.remove(em.getReference(Comment.class, id));
     }
-
 }

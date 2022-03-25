@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,10 +28,6 @@ import javax.persistence.Table;
 @Table(name = "post")
 public class Post extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Column(nullable = false)
     private LocalDateTime created = LocalDateTime.now();
 
@@ -42,38 +39,29 @@ public class Post extends BaseEntity {
 
     @Column(nullable = false)
     private String body;
-    
 
+    @JsonbTransient
     @ManyToMany
     @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private Set<Tag> tags;
 
-    
-    
-    
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public LocalDateTime getCreated() {
         return created;
     }
 
+    @JsonbTransient
     public void setCreated(LocalDateTime created) {
         this.created = created;
+
     }
 
     public User getAuthor() {
         return author;
     }
 
+    @JsonbTransient
     public void setAuthor(User author) {
         this.author = author;
     }
@@ -103,30 +91,8 @@ public class Post extends BaseEntity {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Post other = (Post) obj;
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
     public String toString() {
-        return "Post{" + "id=" + id + ", created=" + created + ", author=" + author + ", title=" + title + ", body=" + body + ", tags=" + tags + '}';
+        return "Post{" + "created=" + created + ", author=" + author + ", title=" + title + ", body=" + body + ", tags=" + tags + '}';
     }
 
 }

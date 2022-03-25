@@ -68,6 +68,11 @@ public abstract class BaseEntity implements Serializable {
         final BaseEntity other = (BaseEntity) obj;
         return Objects.equals(this.id, other.id);
     }
+
+    @Override
+    public String toString() {
+        return "BaseEntity{" + "id=" + id + ", version=" + version + '}';
+    }
     
     
 }

@@ -19,23 +19,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tag")
-public class Tag extends BaseEntity{
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    
+public class Tag extends BaseEntity {
+
     @Column(nullable = false)
     private String name;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -46,32 +33,8 @@ public class Tag extends BaseEntity{
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 19 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Tag other = (Tag) obj;
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
     public String toString() {
-        return "Tag{" + "id=" + id + ", name=" + name + '}';
+        return "Tag{" + "name=" + name + '}';
     }
-    
-    
-    
+
 }
