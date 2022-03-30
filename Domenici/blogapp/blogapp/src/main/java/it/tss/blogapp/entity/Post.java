@@ -4,11 +4,13 @@
  */
 package it.tss.blogapp.entity;
 
+import it.tss.blogapp.adapters.UserTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
 import javax.json.bind.annotation.JsonbTransient;
+import javax.json.bind.annotation.JsonbTypeAdapter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +32,9 @@ public class Post extends BaseEntity {
 
     @Column(nullable = false)
     private LocalDateTime created = LocalDateTime.now();
-
+    
+    
+    //@JsonbTypeAdapter(UserTypeAdapter.class)
     @ManyToOne(optional = false)
     private User author;
 
@@ -40,7 +44,7 @@ public class Post extends BaseEntity {
     @Column(nullable = false)
     private String body;
 
-    @JsonbTransient
+    
     @ManyToMany
     @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")

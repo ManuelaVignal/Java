@@ -6,6 +6,7 @@ package it.tss.blogapp.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.json.JsonObject;
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
@@ -84,6 +85,10 @@ public class User extends BaseEntity {
     @Override
     public String toString() {
         return "User{" + "firstname=" + firstname + ", lastName=" + lastName + ", email=" + email + ", pwd=" + pwd + '}';
+    }
+
+    public JsonObject toJsonSlice() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
