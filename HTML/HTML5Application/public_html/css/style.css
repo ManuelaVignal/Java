@@ -1,0 +1,40 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 31 mar 2022, 14:32:01
+    Author     : tss
+*/
+
+h1{
+
+    color:blue;
+}
+
+#titolo {
+
+    font-family:cursive;
+    font-size:15px;
+}
+
+/* la classe la metto sempre con il punto*/
+
+.sfondoy {
+
+    background-color: aquamarine;
+
+}
+
+span {
+
+    font-size:14px;
+    color:forestgreen;
+}
+
+body{
+    
+    
+    background-color: orange;
+}
+
