@@ -7,6 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 la <head> è la testata,dove ci sono le meta informazioni,importazione librerie...-->
 
 <html>
+
     <head>
 
         <title>pagina Manu</title>
@@ -15,20 +16,170 @@ la <head> è la testata,dove ci sono le meta informazioni,importazione librerie.
         <script src="js/script.js"></script>
         <link rel="stylesheet" href="css/style.css"/>
 
-    </head>l
+        <!-- * in qualsiasi elemento metto i bordi,il css di html -->
+
+        <style>
+
+            * {
+
+                border-width: 1px;
+                border-color:black;
+                border-style:solid;
+
+                margin:3px;
+                margin-top:5px;
+                padding:5px;
+            }
+
+        </style>
+
+    </head>
 
     <body onload="caricadati()">
 
-        <h1 id="titolo" class= "sfondoy" > titolo </h1>
+        <header>
 
-        <p><b>Notizia:</b>
-            <span id="spnome"> oggi abbiamo iniziato il corso HTML5 css e JS6</span></p>
+            <h1>Header testata Parigi-Firenze-Londra </h1>
 
-        <!-- Ancora a di internet -->
 
-        <a href="img/mare.jpg" target="foto">vai al mare</a><br>
-        <img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142"> 
-        <img src="./img/mare.jpg"/>mare
+        </header>
+
+        <div id="main">
+
+            <!-- galleria immagini dentro il main -->
+            <div class="divgalleri">
+                <div class="item-gallery">
+                    <img src="img/london.jpeg">
+                </div>
+                <div class="item-gallery">
+                    <img src="img/firenze1.jpeg">
+                </div>
+                <img src="img/paris.jpeg">
+            </div> 
+
+        </div>
+
+        <div class="info">
+
+            <h2>Descrizione Parigi
+            </h2>
+
+            <p> Si tratta di una sequenza di parole latine che così come sono 
+                posizionate non formano frasi di senso compiuto, bensì danno vita a un testo di 
+                prova utile a riempire spazi che successivamente saranno occupati da testi ad hoc composti
+                dai professionisti della comunicazione. 
+
+
+            </p>
+
+        </div>
+        <div class="info">
+
+            <h2>Descrizione Firenze
+            </h2>
+
+
+            <p><img src="img/firenze1.jpeg" alt="immagine di firenze"/>
+
+                Si tratta di una sequenza di parole latine che così come sono 
+                posizionate non formano frasi di senso compiuto, bensì danno vita a un testo di 
+                prova utile a riempire spazi che successivamente saranno occupati da testi ad hoc composti
+                dai professionisti della comunicazione. 
+
+
+            </p>
+
+        </div>
+
+        <div class="info">
+
+
+
+            <DIV id="contatto">
+
+                <form  method="get" id="fcontatti" action="#">
+
+                    <input id="tmail" required name="mail" placeholder="ins.indirizzo mail"/></br>
+                    <input id="tpwd" type="password" name="psw" placeholder="ins.psw"/></br>
+                    <input id="tnominativo" name="nominativo" placeholder="ins. nome cognome"/></br>
+                    <input id="tanno" min="1990" max="2025" type="number" placeholder="ins. anno"/></br>
+                    <input id="tanno" min="1990" max="2025" type="range" placeholder="ins. anno"/></br>
+                    <input type="date" name="data" id="data"></br>
+                    sesso: <br>maschio <input type="radio" name="sex" value="maschio"></br>
+                    femmina <input type="radio" name="sex" value="femmina"></br>
+                    
+                   
+                    
+                    sesso checkbox: <br>maschio <input type="checkbox" name="csex" value="maschio"></br>
+                    femmina <input type="checkbox" name="csex" value="femmina"></br>
+
+                    <textarea id="tcommento" placeholder="ins. comment" name="commento" rows="5" cols="50"></textarea>/></br>
+
+                    <select id="spv" name="pv" size="4">
+                        <option value="TO">Torino</option>
+                        <option value="AL">Alessandria</option>
+                        <option value="AT">Asti</option>
+                        <option value="TO">Torino</option>
+                        <option value="AL">Alessandria</option>
+                        <option value="AT">Asti</option>
+
+                    </select>
+
+                    <input type="button" id="buttonok" value="ok"><br>
+                    <input type="submit" id="invia" value="INVIA"><br/>
+
+                </form>
+
+            </DIV>
+
+            <h2>Descrizione Londra
+            </h2>
+
+            <p> Si tratta di una sequenza di parole latine che così come sono 
+                posizionate non formano frasi di senso compiuto, bensì danno vita a un testo di 
+                prova utile a riempire spazi che successivamente saranno occupati da testi ad hoc composti
+                dai professionisti della comunicazione. 
+
+
+            </p>
+
+        </div>
+
+        <div class="dati">
+
+            <table>
+                <tr>
+                    <th>Citt&agrave;</th>
+                    <th colspan="2">popolazione e clima</th>
+
+                </tr>
+                <tr>
+                    <td>londra</td>
+                    <td>22200000</td>
+                    <td>continentale</td>
+                </tr>
+                <tr>
+                    <td>firenze</td>
+                    <td>750000</td>
+                    <td>mediterraneo</td>
+                </tr>
+                <tr>
+                    <td>milano</td>
+                    <td>100000</td>
+                    <td>mite</td>
+                </tr>
+
+            </table>
+        </div>
+
+
+
+
+        <footer>
+
+            <<h2>title</h2>
+
+        </footer>
 
     </body>
 

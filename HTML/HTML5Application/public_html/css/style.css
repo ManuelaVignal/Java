@@ -20,21 +20,117 @@ h1{
 
 /* la classe la metto sempre con il punto*/
 
+
+
 .sfondoy {
 
     background-color: aquamarine;
 
 }
 
-span {
+#main span {
 
     font-size:14px;
     color:forestgreen;
 }
 
 body{
-    
-    
+
     background-color: orange;
 }
 
+/*larghezza primacolonna della tabella dati*/
+
+.dati th:nth-child(1){
+
+    width:50%;
+
+
+}
+
+/*le immagini dentro la classe info si piazzano a sinistra*/
+
+.info p img {
+
+    float:left;
+    max-width:300px;
+    margin-right:10px;
+    margin-botton:2px;
+}
+.info p{
+
+    overflow :auto;
+}
+
+table{
+
+    width:50%;
+    margin:0px;
+    padding:0px;
+}
+
+/*gallery style*/
+
+.divgallery{
+
+    overflow:auto;
+    margin:0px;
+}
+
+.item-gallery{
+
+    float: left;
+    width: 50%;
+    padding:0px;
+    border:0px;
+
+}
+form{
+    
+    background-colori:lightgrey;
+    
+}
+
+/*videta per adattare ad uno smart-telefonino*/
+
+@media screen and (min-width: 480px) {
+
+    /*tutta la galleria*/
+
+    .item-gallery{
+        float:none;
+        width: 100%;
+    }
+
+    /*tutte le immagini*/
+
+    .item-gallery img{
+
+        width:95%;
+        border:0px;
+    }
+    
+    .info p img{
+        
+        float:none;
+        max-width: 480px;
+    }
+
+
+    h1{
+        font-size:30px;
+
+
+
+    }
+    
+    h2{
+        font-size:18px;
+    }
+
+    h3{
+        font-size:14px;
+
+    }
+
+}
