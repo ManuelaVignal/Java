@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>bkmapp-service</artifactId>
-        <groupId>com.mycompany</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>it.tss</groupId>
+        <version>1.0</version>
     </parent>
-    <groupId>com.mycompany</groupId>
+    <groupId>it.tss</groupId>
     <artifactId>bkmapp</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
     <dependencies>
         <dependency>

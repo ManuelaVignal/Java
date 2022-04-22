@@ -44,7 +44,7 @@ public class BookmarkStore {
     }
 
     public List<Bookmark> byAuthor(Author u) {
-        return em.createQuery("select e from Bookmark e where e.author:author", Bookmark.class)
+        return em.createQuery("select e from Bookmark e where e.author=:author", Bookmark.class)
                 .setParameter("author", u)
                 .getResultList();
 

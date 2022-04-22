@@ -8,6 +8,7 @@ import it.tss.bkmapp.adapters.EtichettaTypeAdapter;
 import it.tss.bkmapp.adapters.UserTypeAdapter;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.json.bind.annotation.JsonbTypeAdapter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class Bookmark extends BaseEntity {
     @Column(name = "link", nullable = false)
     private String link;
 
-    @JsonbTypeAdapter(EtichettaTypeAdapter.class)
+    @JsonbTransient
     @ManyToMany
     @Column(name = "etichette")
     private Set<Etichetta> etichette = new TreeSet<>();

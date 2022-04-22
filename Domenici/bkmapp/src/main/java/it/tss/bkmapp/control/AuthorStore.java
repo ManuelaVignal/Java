@@ -5,13 +5,16 @@
 package it.tss.bkmapp.control;
 
 
+import it.tss.bkmapp.boundary.Credential;
 import it.tss.bkmapp.entity.Author;
+import it.tss.bkmapp.entity.SecurityEncoding;
 import java.util.List;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -59,10 +62,10 @@ public class AuthorStore {
         return found == null ? Optional.empty() : Optional.of(found);
     }
 
-    /*public Author create(Author entity) {
+    public Author create(Author entity) {
         entity.setPwd(SecurityEncoding.shaHash(entity.getPwd()));
         return save(entity);
-    }*/
+    }
 
     public Author save(Author entity) {
         Author saved = em.merge(entity);
@@ -74,14 +77,14 @@ public class AuthorStore {
         em.remove(em.getReference(Author.class, u.getId()));
     }
 
-    /*public Optional<Author> login(Credential credential) {
+    public Optional<Author> login(Credential credential) {
         try {
-            return Optional.of(em.createQuery("select e from User e where e.email= :usr and e.pwd= :pwd", User.class)
+            return Optional.of(em.createQuery("select e from Author e where e.email= :usr and e.pwd= :pwd", Author.class)
                     .setParameter("usr", credential.usr)
                     .setParameter("pwd", SecurityEncoding.shaHash(credential.pwd))
                     .getSingleResult());
         } catch (NoResultException ex) {
             return Optional.empty();
-        }
-    }*/
+        }   
+    }
 }

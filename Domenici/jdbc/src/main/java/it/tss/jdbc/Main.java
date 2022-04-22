@@ -28,6 +28,7 @@ public class Main {
                 connection.setCatalog("DBScuola");
                 //creazione comandi
                 Statement cmd = connection.createStatement();
+                
 
                 //cursore next su una riga successiva e si ferma quando sono finite le righe a null
                 //in posizione riga gli posso chiedere i dati
@@ -39,6 +40,7 @@ public class Main {
                         System.out.println(rs.getString("titolocorso"));
                         System.out.println(rs.getInt("id_corso"));
                         System.out.println(rs.getInt(1));
+                        
 
                     }
 

@@ -19,6 +19,6 @@
         <class-name>org.mariadb.jdbc.MariaDbDataSource</class-name>
         <url>jdbc:mariadb://localhost:3306/world</url>
         <user>tss</user>
-        <password>ghiglieno</password>
+        <password>root</password>
     </data-source>
 </web-app>
