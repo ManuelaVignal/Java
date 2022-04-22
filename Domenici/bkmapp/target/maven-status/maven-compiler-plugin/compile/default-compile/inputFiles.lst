@@ -1,0 +1,14 @@
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/adapters/UserTypeAdapter.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/entity/Author.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/boundary/AuthorResource.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/control/BookmarkStore.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/adapters/EtichettaTypeAdapter.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/control/EtichettaStore.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/PingResource.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/entity/BaseEntity.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/entity/Etichetta.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/boundary/EtichettaResources.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/entity/Bookmark.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/control/AuthorStore.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/boundary/AuthorsResource.java
+/home/pc/Documenti/github_Manuela/Java/Domenici/bkmapp/src/main/java/it/tss/bkmapp/JAXRSConfiguration.java
