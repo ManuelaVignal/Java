@@ -9,6 +9,7 @@ import it.tss.bkmapp.control.BookmarkStore;
 import it.tss.bkmapp.entity.Author;
 import it.tss.bkmapp.entity.JWTManager;
 import java.util.List;
+import javax.annotation.security.DenyAll;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ import javax.ws.rs.DefaultValue;
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotAuthorizedException;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -44,7 +46,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
  * @author tss
  */
 @Path("/authors")
-@Tag(name = "Gestione Users", description = "Permette di gestire gli utenti di bookmark")
+@Tag(name = "Gestione Users", description = "Permette di gestire gli utenti di bkmapp")
 public class AuthorsResource {
 
     @Inject
@@ -55,7 +57,7 @@ public class AuthorsResource {
 
     @Context
     ResourceContext rc;
-    
+
     @Inject
     JWTManager jwtManager;
 
@@ -67,7 +69,7 @@ public class AuthorsResource {
 
     @Claim(value = "sub")
     String sub;
-    
+
     @POST
     @Path("login")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -119,6 +121,7 @@ public class AuthorsResource {
                 .entity(saved)
                 .build();
     }
+    //il token passa a zero se non faccio questo metodoto option ed ilm programma va in errore
 
     @Path("{id}")
     @RolesAllowed("users")

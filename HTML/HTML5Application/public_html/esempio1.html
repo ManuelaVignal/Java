@@ -16,6 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
                 let ris = "ciao " + inom.value + " " + txcog;
                 let objris = document.querySelector("#divris");
                 objris.innerHTML = ris;
+                
 
             }
 
@@ -37,9 +38,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
 
             <h2> Esempio1 </h2>
             <h3 id="data"></h3>
-            <input id="nome" name="nome" placeHolder="ins.nome"><br>
-            <input id="cognome" name="cognome" placeHolder="ins.cognome"><br>
+            <input type="text" id="nome" name="nome" placeHolder="ins.nome"><br>
+            <input type="text" id="cognome" name="cognome" placeHolder="ins.cognome"><br>
             <input type="button" id="btnris" name="btnris"  value="Calcola!" onclick=" calcola()" ><br>
+           
             <div id="divris">----</div>
 
 

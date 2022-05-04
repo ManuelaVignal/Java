@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick 'getBkms()'>carica bkm</button>
+    <div id="divbkms">no result</div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    function getBkms() {
+
+        let nfile = "https://bkmapp.tssdev.it/resources/bkms";
+        fetch(nfile)
+            .then(ris => 
+            ris.json())
+            .then(jsobj => {
+
+                /*
+                {"count":2,"data":[{"id":2,"version":1,"created":"2022-04-27T08:33:55.294204","description","link"}]}
+                */
+                let f1 = "description";
+                let arbkm = jsobj.data;
+                let table = "<table>";
+                for (bkm of arbkm) {
+                    let row = "<tr><td>" + bkm[f1] + "</td><td>" + bkm.link + "</td></tr>";
+                    table += row;
+                }
+                table += "</table>";
+                document.querySelector("#divbkms").innerHTML = table;
+            });
+
+
+    }
+
+
+</script>
