@@ -1,0 +1,1 @@
+import BkmaTest from "./BkmTest.js";
