@@ -11,15 +11,18 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="jwt-decode.js"></script>
+    <link rel="stylesheet" href="mystyle.css">
     <title>esempio anguraljs bootstrap</title>
 </head>
 
 <body ng-app="myApp">
     <div class="container" ng-controller="loginCtrl">
-        <h4>Utente collegato: <span>{{ loggedusr }}</span></h4>
+        <h4>Utente collegato: <span>{{ loggedusr }}</span><button class="btn" btn-light ng-click="getMyBkms" </h4>
+
 
         <div id="divlogin" ng-hide="logged">
             <h2>FORM LOGIN</h2>
+
             <form name="flogin">
                 <div class="form-group">
                     <label for="usr">Usr:</label>
@@ -38,10 +41,10 @@
             </form>
         </div>
         <div id="divlogged" class="row" ng-show="logged">
-            <div class="col-8">
-                <h3>Elenco bookmarks</h3>
-                <div class="table table-responsive table-bordered" >
-                <table>
+            <div class="col-md-8">
+                <h3>Elenco bookmarks </h3>
+                
+                <table class="table table-responsive table-bordered">
                     <tr>
                         <th>link</th>
                         <th>owner</th>
@@ -49,27 +52,33 @@
                         <th>url</th>
                     </tr>
                     <tr ng-repeat="bk in bkms">
-                        <td><button ng-click="viewBkm('{{bk.link}}')" class="btn btn-outline-success">Dettagli</button></td>
+                        <td><button ng-click="viewBkm( bk.link)" class="btn btn-outline-success">Dettagli</button></td>
                         <td>{{ bk.owner.email }}</td>
                         <td>{{ bk.description }}</td>
                         <td>{{ bk.url }}</td>
                     </tr>
                 </table>
-                <div id="divviewbkm">
-                     <table class="table tabel-bordered table-dark">
-                         <tr>
-                             <td>Description</td><td>{{viewdescrption}}</td>
-                             <td>Created</td><td>{{viewcreated}}</td>
-                             <td>Author</td><td>{{viewauthor}}</td>
-                             <td>Url</td><td>{{viewurl}}</td>
-                             <td>Shared</td><td>{{viewshared}}</td>
-                         </tr>
-                     </table>
-
+                <div id="divviewbkm" ng-show="viewshow">
+                    <table class="table table-bordered table-light">
+                        <tr>
+                            <td>Description</th>
+                            <th>Created</th>
+                            <th>Author</th>
+                            <th>Url</th>
+                            <th>Shared</th>
+                        </tr>
+                        <tr>
+                            <td>{{ viewdescription }}</td>
+                            <td>{{ viewcreated }}</td>
+                            <td>{{ viewauthor }}</td>
+                            <td>{{ viewurl }}</td>
+                            <td>{{ viewdshared }}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-            <div class="col-4">
-                <div id="divinsbkms">
+            <div class="col-md-4">
+                <div id="divinsbkm">
                     <h3>Inserimento Bookmark</h3>
                     <form name="fbkm">
                         <div class="form-group">
@@ -78,43 +87,47 @@
                                 placeholder="Enter description" name="description" required>
                             <span ng-show="fbkm.description.$error.required">campo richiesto</span>
                         </div>
-                        <div class="form-check">
+                        <div class="form-group">
                             <label for="url">Url:</label>
                             <input ng-model="url" required type="text" class="form-control" id="url"
-                                placeholder="Enter url" name="url" required>
+                                placeholder="Enter url" name="url">
                             <span ng-show="fbkm.url.$error.required">campo richiesto</span>
                         </div>
                         <div class="form-check-inline">
                             <label class="form-check-label" for="s1">
-                                <input ng-model="shared" required type="radio" class="form-check-input" id="s1" checked
-                                    name="shared" value="true">condiviso
+                                <input ng-model="shared" id="s1" required type="radio" class="form-check-input" checked
+                                    name="shared" value="true">
+                                condiviso
                             </label>
                         </div>
                         <div class="form-check-inline">
                             <label class="form-check-label" for="s2">
-                                <input ng-model="shared" required type="radio" class="form-check-input" id="s2" checked
-                                    name="shared" value="false">non condiviso
+                                <input ng-model="shared" id="s2" required type="radio" class="form-check-input"
+                                    name="shared" value="false">
+                                non condiviso
                             </label>
                         </div>
-                        <input type=" button" ng-disabled="fbkm.url.$dirty && fbkm.url.$invalid ||  
-                         fbkm.description.$dirty && fbkm.description.$invalid" ng-click="creaBkm()"
-                            class="btn btn-primary" value="Send Bookmark">
-                    </form>
 
-                    <span>{{msginsbkm }}</span>
+                        <input type="button"
+                            ng-disabled="fbkm.url.$dirty && fbkm.url.$invalid ||
+                            fbkm.description.$dirty && fbkm.description.$invalid"
+                            ng-click="creaBkm()" class="btn btn-primary" value="Send Bookmark">
+
+
+                    </form>
+                    <span > {{ msginsbkm }}</span>
+
                 </div>
-                <div id="divinstag" ng-show="viewshow">
+                <div id="divinstag">
                     <h3>Inserimento Tag</h3>
                 </div>
 
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
-
 <script>
     var app = angular.module('myApp', []);
     app.controller('loginCtrl',
@@ -124,7 +137,6 @@
             $scope.msginsbkm="inserisci i dati (tutti obbligatori)";
             $scope.logged = false;
             $scope.viewshow=false;
-            //METODO LOGIN
             $scope.login = function () {
                 let req = {
                     url: "https://bkmapp.tssdev.it/resources/users/login",
@@ -134,7 +146,6 @@
                         "Accept": 'application/json',
                         "Content-type": 'application/json'
                     }
-
                 }
                 $http(req).then(
                     function (response) {   // caso successo
@@ -146,56 +157,56 @@
                         $scope.loggedusr = sessionStorage.getItem("myusr");
                         $scope.logged = true;
                         $scope.getMyBkms();
-
-
                     },
-                    function (response) { // caso errore login
+                    function (response) { //caso errore login
                         sessionStorage.clear();
                         $scope.loggedusr = "nessuno";
                         $scope.logged = false;
-
                     });
 
-            };// fine metodo login ctrl
-            //METODO CREA BKM
+            };// fine metodo login() 
             $scope.creaBkm = function () {
                 let sh=false;
                 let idok=sessionStorage.getItem("myid");
-                idok=idok*1;
-                if($scope.shared=="true") sh=true;
+                idok = idok*1;
+                if ($scope.shared=="true") sh=true;
                 let req = {
-                    url:"https://bkmapp.tssdev.it/resources/users/" + sessionStorage.getItem("myid") + "/bkms",
-
+                    url: "https://bkmapp.tssdev.it/resources/users/" + 
+                    sessionStorage.getItem("myid") + "/bkms",
                     method: "POST",
-                    data: { description: $scope.description, url:$scope.url, shared:sh, owner:{id: idok}},
+                    data: { description: $scope.description, url: $scope.url,
+                            shared: sh ,
+                            owner: {id : idok}
+                        },
                     headers: {
                         
-                        "Authorization":"Bearer " + sessionStorage.getItem("myjwt"),
+                        "Authorization": "Bearer " + sessionStorage.getItem("myjwt"),
                         "Accept": 'application/json',
                         "Content-type": 'application/json'
                     }
-
                 }
                 $http(req).then(
                     function (response) {   // caso successo
-                        $scope.msginsbkm="Bookmark creato correttamente"
+                        $scope.msginsbkm="bookmark creato correttamente!";
                         $scope.getMyBkms();
-
-
                     },
-                    function (response) { // caso errore login
-                        $scope.msginsbkm="Errore di inserimento Bookmark"
-
+                    function (response) { //caso errore login
+                        $scope.msginsbkm="Errore in creazione bookmark!!!";
+                        /*
+                        sessionStorage.clear();
+                        $scope.loggedusr = "nessuno";
+                        $scope.logged = false;
+                        */
                     });
 
-            };// fine metodo login ctrl
-            //METODO OTTIENI BKM
+            };// fine metodo login() 
             $scope.getMyBkms = function () {
                 let myurl = "https://bkmapp.tssdev.it/resources/users/" +
-                    sessionStorage.getItem("myid") + "/bkms"
+                    sessionStorage.getItem("myid") + "/bkms";
                 let req = {
                     url: myurl,
                     method: "GET",
+
                     headers: {
                         "Authorization": "Bearer " + sessionStorage.getItem("myjwt"),
                         "Accept": 'application/json',
@@ -207,23 +218,21 @@
                     function (response) {   // caso successo
                         $scope.bkms = response.data.data;
 
-
-
                     },
-                    function (response) { // caso errore 
-                        /*
-                        sessionStorage.clear();
+                    function (response) { //caso errore login
+                        /*sessionStorage.clear();
                         $scope.loggedusr = "nessuno";
-                        $scope.logged = false;
+                        $scope.logged=false; 
                         */
                     });
 
-            };// fine metodo getMybkms
-            $scope.viewBkms = function (link) {
-                let myurl = "https://bkmapp.tssdev.it/resources" + link
+            };// fine metodo getMyBkms() 
+            $scope.viewBkm = function (link) {
+                let myurl = "https://bkmapp.tssdev.it/resources" + link          ;
                 let req = {
                     url: myurl,
                     method: "GET",
+
                     headers: {
                         "Authorization": "Bearer " + sessionStorage.getItem("myjwt"),
                         "Accept": 'application/json',
@@ -233,29 +242,30 @@
                 }
                 $http(req).then(
                     function (response) {   // caso successo
-                        let json = response.data.data;
+                        let json = response.data;
                         $scope.viewdescription=json.description;
                         $scope.viewshared=json.shared;
-                        $scope.viewauthor=json.owner.email +"[id:" + json.owner.id + "]";
+                        $scope.viewauthor=json.owner.email + "[id:" + json.owner.id + "]";
                         $scope.viewurl=json.url;
                         $scope.viewcreated=json.created.substr(0,10);
-
-
-
+                        $scope.viewshow=true;                       
 
                     },
-                    function (response) { // caso errore login
+                    function (response) { //caso errore login
                         $scope.viewdescription="";
                         $scope.viewshared="";
                         $scope.viewauthor="";
                         $scope.viewurl="";
                         $scope.viewcreated="";
-                        $scope.vieshow=false;
+                        $scope.viewshow=false;
                     });
 
-            };
+            };// fine metodo getMyBkms() 
         } //fine function controller
     );   // fine costruttore controller
 
 
 </script>
+
+home.html
+Visualizzazione di home.html.
