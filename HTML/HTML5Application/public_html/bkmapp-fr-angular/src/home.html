@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="jwt-decode.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
     <link rel="stylesheet" href="mystyle.css">
     <title>esempio anguraljs bootstrap</title>
 </head>
@@ -20,7 +19,8 @@
 <body ng-app="myApp">
     <div class="container" ng-controller="loginCtrl">
         <h4>Utente collegato: <span>{{ loggedusr }}</span> <button class="btn btn-light" ng-click="getMyBkms(1)">
-                refresh!</button> </h4>
+
+                refresh!</button> <span id="totcount">?</span> </h4>
 
 
         <div id="divlogin" ng-hide="logged">
@@ -66,8 +66,9 @@
                     <li ng-repeat="p in np" class="page-item"><a class="page-link" href="#"
                             ng-click="getMyBkms(p)">{{p}}</a></li>
                 </ul>
-                <div id="myPie" style="width:  100%;"></div>
-                <div id="myColumn" style="width:  100%;"></div>
+                <div id="myPie" style="width: 100%;"></div>
+                <div id="myColumn" style="width: 100%;"></div>
+                
                 <!-- div per vista singolo bkm -->
                 <div id="divviewbkm" ng-show="viewshow">
                     <table class="table table-bordered table-light">
@@ -139,8 +140,9 @@
 
 </html>
 <script>
-    //CARICHERÀ I MODULI PER I GRAFICI
+    //caricachera' i moduli per io grafici google
     google.charts.load('current', { 'packages': ['corechart'] });
+    let all=[];
 
     var app = angular.module('myApp', []);
     app.controller('loginCtrl',
@@ -150,6 +152,7 @@
             $scope.msginsbkm = "inserisci i dati (tutti obbligatori)";
             $scope.logged = false;
             $scope.viewshow = false;
+            $scope.allbkms=[];
             $scope.login = function () {
                 let req = {
                     url: "https://bkmapp.tssdev.it/resources/users/login",
@@ -178,35 +181,6 @@
                     });
 
             };// fine metodo login() 
-
-            $scope.creaPaginator = function (count, size) {
-                let npag = count / size;
-                $scope.ipag = []
-                for (let i = 1; i <= npag; i++)
-                    $scope.ipag.push(i);
-                // 2.8 => 3 pagine
-                npag = Math.ceil(npag);
-                // myul e' ilnostro paginatore ul
-                let myul = document.querySelector("#bkmPaginator");
-                myul.innerHTML = "";
-                for (let i = 1; i <= npag; i++) {
-                    // creo un li
-                    let newli = document.createElement("li");
-                    // creo classe per li
-                    newli.setAttribute("class", "page-item");
-                    // creo a
-                    let newa = document.createElement("a");
-                    // creo classe
-                    newa.setAttribute("class", "page-link");
-                    let newhref = "getMyBkms(" + i + ")";
-                    newa.setAttribute("ng-click", newhref);
-                    newa.setAttribute("href", "#");
-                    newa.innerHTML = i;
-                    newli.appendChild(newa);
-                    myul.appendChild(newli);
-                    //<li class="page-item"><a class="page-link" href="getMyBkms(1)">1</a></li>
-                }
-            }
 
 
 
@@ -246,54 +220,51 @@
                     });
 
             };// fine metodo login() 
-
             $scope.creaGraph = function () {
                 // array primo elemento etichette valori
-                //e poi n elementi coi dati della serie
+                // e poi n elementi coi dati della serie
                 let nums = 0;
                 let numns = 0;
                 for (bk of $scope.bkms) {
                     if (bk.shared) nums++;
                     if (!bk.shared) numns++;
-
                 }
-                // es nums--3 e numns--2 tot --5
-                let dati = [['Tipo', 'Percentuale'],
-                ['Shared', nums],
-                ['Not Shared', numns]];
-
-                //inserire i dati nel model di google chart
+                // es nums -- 3 e numns -- 2   tot 5
+                let dati = [
+                    ['Tipo', 'Percentuale'],
+                    ['Shared', nums],
+                    ['Not Shared', numns]];
+                // inserire i dati nel model di google chart
                 let data = google.visualization.arrayToDataTable(dati);
                 let options = {
                     title: 'World Wide BKMS tss@enterprise'
                 };
                 let chart = new google.visualization.PieChart(document.getElementById('myPie'));
                 chart.draw(data, options);
-            };
-
+            }
             $scope.creaGraphColumn = function () {
                 // array primo elemento etichette valori
-                //e poi n elementi coi dati della serie
+                // e poi n elementi coi dati della serie
                 let nums = 0;
                 let numns = 0;
                 for (bk of $scope.allbkms) {
                     if (bk.shared) nums++;
                     if (!bk.shared) numns++;
-
                 }
-                // es nums--3 e numns--2 tot --5
-                let dati = [['Tipo', 'Percentuale'],
-                ['Shared', nums],
-                ['Not Shared', numns]];
-
-                //inserire i dati nel model di google chart
+                // es nums -- 3 e numns -- 2   tot 5
+                let dati = [
+                    ['Tipo', 'Percentuale'],
+                    ['Shared', nums],
+                    ['Not Shared', numns]];
+                // inserire i dati nel model di google chart
                 let data = google.visualization.arrayToDataTable(dati);
                 let options = {
-                    title: 'World Wide BKMS tss@enterprise'
+                    title: 'All BKMS tss@enterprise'
                 };
                 let chart = new google.visualization.ColumnChart(document.getElementById('myColumn'));
                 chart.draw(data, options);
-            };
+            }
+
 
             $scope.getMyBkms = function (pag) {
 
@@ -314,16 +285,19 @@
                     function (response) {   // caso successo
                         $scope.bkms = response.data.data;
                         let count = response.data.count;
+                        document.getElementById("totcount").innerHTML = " (" + count + ")";
                         count = count / 5;
-                        count = Math.ceil(count)
+                        count = Math.ceil(count);
                         let arp = []
                         //scorro e creo elementi per array
                         for (let i = 1; i <= count; i++)
                             arp.push(i)
                         $scope.np = arp;
-                        // CALL creaGraph perchè in bkms array oggetti bkm
-                        scope.getALLMyBkms(count);
+                        // call creaGrpah perchje' in bkms array oggetti bkm
+                        $scope.getALLMyBkms(count);
                         $scope.creaGraph();
+
+
                     },
                     function (response) { //caso errore login
                         console.log("qweqwe")
@@ -333,14 +307,14 @@
                         */
                     });
 
-            };// fine metodo getMyBkms() 
-
-
-            $scope.getAllMyBkms = function (numpag) {
-                $scope.allbkms = []
-
+            };// fine metodo getMyBkms()
+             
+            $scope.getALLMyBkms = function (numpag) {
+                // eseguo n volte la fetch apagine successive e mi limito ad aggiungere 
+                // a $scope.allbkms tutti  i bkm che carico
+                $scope.allbkms.splice(0,$scope.allbkms.length);
+                all.splice(0,all.length);
                 for (let pag = 1; pag <= numpag; pag++) {
-
                     let myurl = "https://bkmapp.tssdev.it/resources/users/" +
                         sessionStorage.getItem("myid") + "/bkms/?page=" + pag;
                     let req = {
@@ -357,12 +331,12 @@
                     $http(req).then(
                         function (response) {   // caso successo
                             //array da max 5 bkm
-                            let mybkms = response.data.data;
-                            for (let item of mybkms)//scorro un bkm  per volta e lo inseriscon in allbkms
+                            let mybkms =response.data.data;
+                            for (let item of mybkms) {//scorro un bkm per volta e lo inserisco in allbkms
                                 $scope.allbkms.push(item);
-
-
-
+                                all.push(item);
+                            }
+                            if (pag==numpag) $scope.creaGraphColumn();
                         },
                         function (response) { //caso errore login
                             console.log("qweqwe")
@@ -372,6 +346,8 @@
                             */
                         });
                 }
+                //fine ciclo crea allbkms
+                
 
             };// fine metodo getMyBkms() 
 
@@ -413,5 +389,8 @@
         } //fine function controller
     );   // fine costruttore controller
 
-$scope.creaGraphColumn();
+
 </script>
+
+home.html
+Visualizzazione di home.html.
