@@ -3,9 +3,9 @@
   <persistence-unit name="pu" transaction-type="JTA">
     <jta-data-source>java:global/jdbc/bkmapp</jta-data-source>
     <properties>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.schema-generation.database.action" value="none"/>
       <property name="javax.persistence.schema-generation.scripts.action" value="create"/>
-      <property name="javax.persistence.schema-generation.scripts.create-target" value="/home/pc/bkmappCreate.sql"/>
+     <property name="javax.persistence.schema-generation.scripts.create-target" value="/home/tss/bkmappCreate.sql"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDB103Dialect"/>
     </properties>
   </persistence-unit>

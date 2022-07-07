@@ -4,17 +4,23 @@
  */
 package it.tss.bkmapp.boundary;
 
+import static com.nimbusds.jose.util.X509CertChainUtils.store;
 import it.tss.bkmapp.control.BookmarkStore;
 import it.tss.bkmapp.control.EtichettaStore;
 import it.tss.bkmapp.entity.Bookmark;
+import it.tss.bkmapp.entity.Data;
 import it.tss.bkmapp.entity.Etichetta;
 import java.util.List;
 import java.util.Set;
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PATCH;
@@ -23,6 +29,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -33,6 +40,8 @@ import javax.ws.rs.core.MediaType;
 @org.eclipse.microprofile.openapi.annotations.tags.Tag(
         name = "Gestione bookmarks", description = "Permetti ad ogni utente di gestire i propri bookmark"
 )
+@DenyAll
+
 public class BookmarkResource {
 
     @Inject
@@ -42,11 +51,10 @@ public class BookmarkResource {
     @Inject
     EtichettaStore  etichettastore;
     
-    /*@Inject
-    CommentStore commentStore;
-       */
+ 
     
-    
+    //@PermitAll
+    @RolesAllowed("users")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Bookmark> all() {
