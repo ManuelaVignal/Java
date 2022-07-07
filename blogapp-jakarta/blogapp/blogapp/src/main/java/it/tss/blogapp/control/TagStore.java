@@ -9,7 +9,6 @@ import it.tss.blogapp.entity.Post;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import javax.ejb.PostActivate;
 import javax.enterprise.context.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

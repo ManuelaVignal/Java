@@ -22,7 +22,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
 @DeclareRoles({"users"})
 @ApplicationPath("resources")
 @OpenAPIDefinition(info = @Info(
-            title = "Bkmapp application", 
+            title = "bkmapp application", 
             version = "1.0.0", 
             contact = @Contact(
                     name = "tss dev", 
@@ -30,7 +30,7 @@ import org.eclipse.microprofile.openapi.annotations.servers.Server;
                     url = "http://ciacformazione.it")
             ),
             servers = {
-                @Server(url = "/Bkmapp",description = "localhost")
+                @Server(url = "/bkmapp",description = "localhost")
             })
 public class JAXRSConfiguration extends Application {
 

@@ -22,7 +22,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
  */
 @Path("/etichette")
 @org.eclipse.microprofile.openapi.annotations.tags.Tag(
-        name = "Gestione etichette", description = "Permetti visualizzare le etichette presenti"
+        name = "Gestione etichette", description = "Permette di visualizzare le etichette presenti"
 )
 public class EtichettaResources {
 

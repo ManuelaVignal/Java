@@ -97,6 +97,8 @@ public class AuthorResource {
         @APIResponse(responseCode = "200", description = "Elenco ritornato con successo")
     })
     public Response createPost(@Valid Bookmark entity) {
+        Author found = store.find(id).orElseThrow(() -> new NotFoundException("user non trovato. id=" + id));
+        entity.setAuthor(found);
         Bookmark saved = bookmarkStore.save(entity);
         return Response.status(Response.Status.CREATED)
                 .entity(saved)

@@ -12,11 +12,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="jwt-decode.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   
     <link rel="stylesheet" href="mystyle.css">
-    <title>esempio anguraljs bootstrap</title>
+    <title>Bkmapp</title>
 </head>
-
-<body ng-app="myApp">
+               
+<body style="background-color:lightcyan"ng-app="myApp">
+    
     <div class="container" ng-controller="loginCtrl">
         <h4>Utente collegato: <span>{{ loggedusr }}</span> <button class="btn btn-light" ng-click="getMyBkms(1)">
 
@@ -24,7 +26,7 @@
 
 
         <div id="divlogin" ng-hide="logged">
-            <h2>FORM LOGIN</h2>
+            <h2>Page Login Utente</h2>
 
             <form name="flogin">
                 <div class="form-group">
@@ -73,7 +75,7 @@
                 <div id="divviewbkm" ng-show="viewshow">
                     <table class="table table-bordered table-light">
                         <tr>
-                            <td>Description</th>
+                            <td>Description</td>
                             <th>Created</th>
                             <th>Author</th>
                             <th>Url</th>
@@ -101,9 +103,9 @@
                         </div>
                         <div class="form-group">
                             <label for="url">Url:</label>
-                            <input ng-model="url" required type="text" class="form-control" id="url"
+                            <input ng-model="link" required type="text" class="form-control" id="url"
                                 placeholder="Enter url" name="url">
-                            <span ng-show="fbkm.url.$error.required">campo richiesto</span>
+                            <span ng-show="fbkm.link.$error.required">campo richiesto</span>
                         </div>
                         <div class="form-check-inline">
                             <label class="form-check-label" for="s1">
@@ -120,7 +122,7 @@
                             </label>
                         </div>
 
-                        <input type="button" ng-disabled="fbkm.url.$dirty && fbkm.url.$invalid ||
+                        <input type="button" ng-disabled="fbkm.link.$dirty && fbkm.link.$invalid ||
                             fbkm.description.$dirty && fbkm.description.$invalid" ng-click="creaBkm()"
                             class="btn btn-primary" value="Send Bookmark">
 
@@ -150,12 +152,12 @@
             $scope.usr = '';
             $scope.pwd = '';
             $scope.msginsbkm = "inserisci i dati (tutti obbligatori)";
-            $scope.logged = false;
+            $scope.logged =false;
             $scope.viewshow = false;
             $scope.allbkms=[];
             $scope.login = function () {
                 let req = {
-                    url: "https://bkmapp.tssdev.it/resources/users/login",
+                    url: "http://localhost:8080/bkmapp/resources/authors/login",
                     method: "POST",
                     data: { usr: $scope.usr, pwd: $scope.pwd },
                     headers: {
@@ -165,7 +167,9 @@
                 }
                 $http(req).then(
                     function (response) {   // caso successo
+                
                         jsobj = response.data;
+                        //onsole.log(response.data);
                         sessionStorage.setItem("myjwt", jsobj.jwt);
                         let decoded = jwt_decode(jsobj.jwt);
                         sessionStorage.setItem("myid", decoded.sub);
@@ -190,12 +194,12 @@
                 idok = idok * 1;
                 if ($scope.shared == "true") sh = true;
                 let req = {
-                    url: "https://bkmapp.tssdev.it/resources/users/" +
-                        sessionStorage.getItem("myid") + "/bkms",
+                    url: "http://localhost:8080/bkmapp/resources/bookmarks/" +
+                        sessionStorage.getItem("myid"), //+ "/bookmarks",
                     method: "POST",
                     data: {
-                        description: $scope.description, url: $scope.url,
-                        shared: sh,
+                        description: $scope.description, link: $scope.link,
+                        shared:sh,
                         owner: { id: idok }
                     },
                     headers: {
@@ -268,8 +272,8 @@
 
             $scope.getMyBkms = function (pag) {
 
-                let myurl = "https://bkmapp.tssdev.it/resources/users/" +
-                    sessionStorage.getItem("myid") + "/bkms/?page=" + pag;
+                let myurl = "http://localhost:8080/bkmapp/resources/authors/" +
+                    sessionStorage.getItem("myid") + "/bookmarks/?page=" + pag;
                 let req = {
                     url: myurl,
                     method: "GET",
@@ -283,7 +287,7 @@
                 }
                 $http(req).then(
                     function (response) {   // caso successo
-                        $scope.bkms = response.data.data;
+                        $scope.bkms = response.data;
                         let count = response.data.count;
                         document.getElementById("totcount").innerHTML = " (" + count + ")";
                         count = count / 5;
@@ -300,7 +304,7 @@
 
                     },
                     function (response) { //caso errore login
-                        console.log("qweqwe")
+                        console.log("errore:"+response.message)
                         /*sessionStorage.clear();
                         $scope.loggedusr = "nessuno";
                         $scope.logged=false; 
@@ -315,8 +319,8 @@
                 $scope.allbkms.splice(0,$scope.allbkms.length);
                 all.splice(0,all.length);
                 for (let pag = 1; pag <= numpag; pag++) {
-                    let myurl = "https://bkmapp.tssdev.it/resources/users/" +
-                        sessionStorage.getItem("myid") + "/bkms/?page=" + pag;
+                    let myurl = "http://localhost:8080/bkmapp/resources/bookmarks" //+
+                       // sessionStorage.getItem("myid") + "/bkms/?page=" + pag;
                     let req = {
                         url: myurl,
                         method: "GET",
@@ -339,7 +343,7 @@
                             if (pag==numpag) $scope.creaGraphColumn();
                         },
                         function (response) { //caso errore login
-                            console.log("qweqwe")
+                            console.log("errore:" +response.message)
                             /*sessionStorage.clear();
                             $scope.loggedusr = "nessuno";
                             $scope.logged=false; 
@@ -353,7 +357,7 @@
 
 
             $scope.viewBkm = function (link) {
-                let myurl = "https://bkmapp.tssdev.it/resources" + link;
+                let myurl = "http://localhost:8080/bkmapp/resources/authors/" + link;
                 let req = {
                     url: myurl,
                     method: "GET",
@@ -391,6 +395,3 @@
 
 
 </script>
-
-home.html
-Visualizzazione di home.html.

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"it.tss.blogapp"},{"l":"it.tss.blogapp.adapters"},{"l":"it.tss.blogapp.boundary"},{"l":"it.tss.blogapp.control"},{"l":"it.tss.blogapp.entity"}]

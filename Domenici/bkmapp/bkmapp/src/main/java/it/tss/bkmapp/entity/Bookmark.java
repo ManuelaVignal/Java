@@ -26,7 +26,8 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "bookmark")
 public class Bookmark extends BaseEntity {
 
-    @Column(name = "descrizione")
+    @NotBlank
+    @Column(nullable = false) 
     private String descrizione;
 
     @NotBlank
@@ -39,7 +40,7 @@ public class Bookmark extends BaseEntity {
     private Set<Etichetta> etichette = new TreeSet<>();
 
     @Column(name = "condiviso", nullable = false)
-    private boolean share;
+    private boolean shared;
 
     @JsonbTypeAdapter(UserTypeAdapter.class)
     @ManyToOne(optional = false)
@@ -70,12 +71,12 @@ public class Bookmark extends BaseEntity {
         this.etichette = etichette;
     }
 
-    public boolean isShare() {
-        return share;
+    public boolean isShared() {
+        return shared;
     }
 
-    public void setShare(boolean share) {
-        this.share = share;
+    public void setShared(boolean shared) {
+        this.shared = shared;
     }
 
     public Author getAuthor() {
@@ -88,7 +89,7 @@ public class Bookmark extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Bookmark{" + "id =" + id + "descrizione=" + descrizione + ", link=" + link + ", etichette=" + etichette + ", share=" + share + ", author=" + author + '}';
+        return "Bookmark{" + "id =" + id + "descrizione=" + descrizione + ", link=" + link + ", etichette=" + etichette + ", shared=" + shared + ", author=" + author + '}';
     }
 
 }

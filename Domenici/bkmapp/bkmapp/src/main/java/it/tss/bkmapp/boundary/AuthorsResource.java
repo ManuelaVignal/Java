@@ -59,10 +59,10 @@ public class AuthorsResource {
     ResourceContext rc;
 
     @Inject
-    JWTManager jwtManager;
+    private JWTManager jwtManager;
 
     @Inject
-    JsonWebToken token;
+    private JsonWebToken token;
 
     @Context
     UriInfo uriInfo;
@@ -78,7 +78,7 @@ public class AuthorsResource {
     public JsonObject login(@Valid Credential credential) {
         var u = store.login(credential).orElseThrow(() -> new NotAuthorizedException(
                 Response.status(Response.Status.UNAUTHORIZED).build()));
-        var jwt = jwtManager.generate(u);
+       var jwt = jwtManager.generate(u);
         return Json.createObjectBuilder()
                 .add("jwt", jwt)
                 .build();
@@ -121,10 +121,10 @@ public class AuthorsResource {
                 .entity(saved)
                 .build();
     }
-    //il token passa a zero se non faccio questo metodoto option ed ilm programma va in errore
+    //il token passa a zero se non faccio questo metodoto option ed il programma va in errore
 
     @Path("{id}")
-    @RolesAllowed("users")
+    @RolesAllowed("authors")
     public AuthorResource find(@PathParam("id") Long id) {
         if (Long.parseLong(token.getSubject()) != id) {
             System.out.println("id utente non corrispondente");

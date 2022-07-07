@@ -1,0 +1,81 @@
+@options
+@packages
+-classpath
+'/home/pc/.m2/repository/jakarta/platform/jakarta.jakartaee-api/8.0.0/jakarta.jakartaee-api-8.0.0.jar:/home/pc/.m2/repository/com/nimbusds/nimbus-jose-jwt/8.16/nimbus-jose-jwt-8.16.jar:/home/pc/.m2/repository/com/github/stephenc/jcip/jcip-annotations/1.0-1/jcip-annotations-1.0-1.jar:/home/pc/.m2/repository/net/minidev/json-smart/2.3/json-smart-2.3.jar:/home/pc/.m2/repository/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar:/home/pc/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar:/home/pc/.m2/repository/org/eclipse/microprofile/microprofile/3.3/microprofile-3.3.pom:/home/pc/.m2/repository/javax/enterprise/cdi-api/2.0/cdi-api-2.0.jar:/home/pc/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar:/home/pc/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar:/home/pc/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar:/home/pc/.m2/repository/javax/ws/rs/javax.ws.rs-api/2.1/javax.ws.rs-api-2.1.jar:/home/pc/.m2/repository/javax/json/bind/javax.json.bind-api/1.0/javax.json.bind-api-1.0.jar:/home/pc/.m2/repository/javax/json/javax.json-api/1.1/javax.json-api-1.1.jar:/home/pc/.m2/repository/javax/annotation/javax.annotation-api/1.3/javax.annotation-api-1.3.jar:/home/pc/.m2/repository/org/eclipse/microprofile/config/microprofile-config-api/1.4/microprofile-config-api-1.4.jar:/home/pc/.m2/repository/org/eclipse/microprofile/fault-tolerance/microprofile-fault-tolerance-api/2.1/microprofile-fault-tolerance-api-2.1.jar:/home/pc/.m2/repository/org/osgi/org.osgi.annotation.versioning/1.0.0/org.osgi.annotation.versioning-1.0.0.jar:/home/pc/.m2/repository/org/eclipse/microprofile/health/microprofile-health-api/2.2/microprofile-health-api-2.2.jar:/home/pc/.m2/repository/org/eclipse/microprofile/metrics/microprofile-metrics-api/2.3/microprofile-metrics-api-2.3.jar:/home/pc/.m2/repository/org/eclipse/microprofile/jwt/microprofile-jwt-auth-api/1.1/microprofile-jwt-auth-api-1.1.jar:/home/pc/.m2/repository/org/eclipse/microprofile/openapi/microprofile-openapi-api/1.1/microprofile-openapi-api-1.1.jar:/home/pc/.m2/repository/org/eclipse/microprofile/rest/client/microprofile-rest-client-api/1.4.0/microprofile-rest-client-api-1.4.0.jar:/home/pc/.m2/repository/org/eclipse/microprofile/opentracing/microprofile-opentracing-api/1.3/microprofile-opentracing-api-1.3.jar:/home/pc/.m2/repository/org/mariadb/jdbc/mariadb-java-client/2.5.2/mariadb-java-client-2.5.2.jar:/home/pc/.m2/repository/org/microprofile-ext/openapi-ext/openapi-ui/1.1.5/openapi-ui-1.1.5.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'11'
+-sourcepath
+'/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2022. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'blogapp 1.0 API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' '/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'blogapp 1.0 API'
+it.tss.blogapp.control
+it.tss.blogapp
+it.tss.blogapp.entity
+it.tss.blogapp.adapters
+it.tss.blogapp.boundary
+/home/pc/.m2/repository/jakarta/platform/jakarta.jakartaee-api/8.0.0/jakarta.jakartaee-api-8.0.0.jar = 1647621260513
+/home/pc/.m2/repository/com/nimbusds/nimbus-jose-jwt/8.16/nimbus-jose-jwt-8.16.jar = 1649418609240
+/home/pc/.m2/repository/com/github/stephenc/jcip/jcip-annotations/1.0-1/jcip-annotations-1.0-1.jar = 1649418608704
+/home/pc/.m2/repository/net/minidev/json-smart/2.3/json-smart-2.3.jar = 1649418609192
+/home/pc/.m2/repository/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar = 1649418608984
+/home/pc/.m2/repository/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar = 1649418609408
+/home/pc/.m2/repository/org/eclipse/microprofile/microprofile/3.3/microprofile-3.3.pom = 1649418593372
+/home/pc/.m2/repository/javax/enterprise/cdi-api/2.0/cdi-api-2.0.jar = 1649418607432
+/home/pc/.m2/repository/javax/el/javax.el-api/3.0.0/javax.el-api-3.0.0.jar = 1649418607832
+/home/pc/.m2/repository/javax/interceptor/javax.interceptor-api/1.2/javax.interceptor-api-1.2.jar = 1649418607620
+/home/pc/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar = 1649418607448
+/home/pc/.m2/repository/javax/ws/rs/javax.ws.rs-api/2.1/javax.ws.rs-api-2.1.jar = 1649418607880
+/home/pc/.m2/repository/javax/json/bind/javax.json.bind-api/1.0/javax.json.bind-api-1.0.jar = 1649418607632
+/home/pc/.m2/repository/javax/json/javax.json-api/1.1/javax.json-api-1.1.jar = 1649418607660
+/home/pc/.m2/repository/javax/annotation/javax.annotation-api/1.3/javax.annotation-api-1.3.jar = 1649418607820
+/home/pc/.m2/repository/org/eclipse/microprofile/config/microprofile-config-api/1.4/microprofile-config-api-1.4.jar = 1649418607888
+/home/pc/.m2/repository/org/eclipse/microprofile/fault-tolerance/microprofile-fault-tolerance-api/2.1/microprofile-fault-tolerance-api-2.1.jar = 1649418607972
+/home/pc/.m2/repository/org/osgi/org.osgi.annotation.versioning/1.0.0/org.osgi.annotation.versioning-1.0.0.jar = 1649418608060
+/home/pc/.m2/repository/org/eclipse/microprofile/health/microprofile-health-api/2.2/microprofile-health-api-2.2.jar = 1649418608048
+/home/pc/.m2/repository/org/eclipse/microprofile/metrics/microprofile-metrics-api/2.3/microprofile-metrics-api-2.3.jar = 1649418608116
+/home/pc/.m2/repository/org/eclipse/microprofile/jwt/microprofile-jwt-auth-api/1.1/microprofile-jwt-auth-api-1.1.jar = 1649418608096
+/home/pc/.m2/repository/org/eclipse/microprofile/openapi/microprofile-openapi-api/1.1/microprofile-openapi-api-1.1.jar = 1649418608304
+/home/pc/.m2/repository/org/eclipse/microprofile/rest/client/microprofile-rest-client-api/1.4.0/microprofile-rest-client-api-1.4.0.jar = 1649418608196
+/home/pc/.m2/repository/org/eclipse/microprofile/opentracing/microprofile-opentracing-api/1.3/microprofile-opentracing-api-1.3.jar = 1649418608204
+/home/pc/.m2/repository/org/mariadb/jdbc/mariadb-java-client/2.5.2/mariadb-java-client-2.5.2.jar = 1649418609168
+/home/pc/.m2/repository/org/microprofile-ext/openapi-ext/openapi-ui/1.1.5/openapi-ui-1.1.5.jar = 1649418611840
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/src/main/java = 1653123131358
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/script.js = 1657123043284
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/allclasses-index.html = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/allpackages-index.html = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/index.html = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/element-list = 1657123042792
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/type-search-index.js = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/allclasses.html = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/type-search-index.zip = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/member-search-index.js = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/help-doc.html = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/package-search-index.js = 1657123043092
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/index-all.html = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/overview-summary.html = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/constant-values.html = 1657123042908
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/search.js = 1657123043284
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/package-search-index.zip = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/member-search-index.zip = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/stylesheet.css = 1657123043284
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/deprecated-list.html = 1657123043192
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/overview-tree.html = 1657123043092
+/home/pc/Documenti/gitManu/Java/blogapp-jakarta/blogapp/blogapp/target/site/apidocs/serialized-form.html = 1657123042944

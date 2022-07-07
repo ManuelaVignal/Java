@@ -72,7 +72,8 @@ public class UsersResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public JsonObject login(@Valid Credential credential) {
-        User u =store.login(credential).orElseThrow(()-> new NotAuthorizedException(Response.status(Response.Status.UNAUTHORIZED).build()));
+        User u =store.login(credential).orElseThrow(()-> new NotAuthorizedException
+        (Response.status(Response.Status.UNAUTHORIZED).build()));
         String jwt=jwtManager.generate(u);
         return Json.createObjectBuilder().add("jwt", jwt)
                 .build();

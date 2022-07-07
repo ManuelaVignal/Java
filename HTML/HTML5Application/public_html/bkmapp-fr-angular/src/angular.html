@@ -32,7 +32,7 @@
                 <span ng-show="flogin.pwd.$error.required">campo richiesto</span>
             </div>
             <input type="button" ng-disabled="flogin.usr.$dirty && flogin.usr.$invalid || 
-            flogin.pwd.$dirty && flogin.pwd.$invalid" ng-click="login()" class="btn btn-primary" value="Submit"></button>
+                        flogin.pwd.$dirty && flogin.pwd.$invalid" ng-click="login()" class="btn btn-primary" value="Submit"/>
         </form>
     </div>
 </body>
@@ -46,7 +46,8 @@
         $scope.pwd = "";
         $scope.login = function () {
             let req = {
-                url: "https://bkmapp.tssdev.it/resources/users/login",
+                url: "http://localhost:8080/bkmapp/resources/authors/login",
+                       
                 method: "POST",
                 data: { usr: $scope.usr, pwd: $scope.pwd },
                 headers: {

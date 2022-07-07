@@ -33,7 +33,7 @@ public class BookmarkStore {
     EtichettaStore store;
 
     public List<Bookmark> all() {
-        return em.createQuery("select e from Bookmark e order by e.author")
+        return em.createQuery("select e from Bookmark e order by e.author",Bookmark.class)
                 .getResultList();
     }
 

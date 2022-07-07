@@ -7,6 +7,13 @@
         <url>jdbc:mariadb://localhost:3306/bkmapp</url>
         <user>bkmapp</user>
         <password>bkmapp</password>
+        
+        <property><name>allowPublicKeyRetrieval</name><value>true</value></property> 
+        <property>
+            <name>useSSL</name>
+            <value>false</value>
+        </property>
+        
     </data-source>
     
     <context-param>
