@@ -1,1 +1,1 @@
-import BkmaTest from "./BkmTest.js";
+import BookmarkTest from "./BookmarkTest.js";

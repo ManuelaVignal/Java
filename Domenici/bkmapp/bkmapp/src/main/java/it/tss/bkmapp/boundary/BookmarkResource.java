@@ -60,22 +60,23 @@ public class BookmarkResource {
     public List<Bookmark> all() {
         return bookmarkstore.all();
     }
-
+    @RolesAllowed("users")
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Bookmark find(@PathParam("id") Long id) {
         return bookmarkstore.find(id).orElseThrow(() -> new NotFoundException());
     }
-
+    
+    @RolesAllowed("users")
     @PUT
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Bookmark update(@PathParam("id") Long id, @Valid Bookmark entity) {
-        return bookmarkstore.save(entity);
+        return bookmarkstore.update(id,entity);
     }
-
+    @RolesAllowed("users")
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)

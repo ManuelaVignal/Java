@@ -19,6 +19,8 @@
                
 <body style="background-color:lightcyan"ng-app="myApp">
     
+     <img src="img/login.jpg" style="width:10%" height="100"/>
+    
     <div class="container" ng-controller="loginCtrl">
         <h4>Utente collegato: <span>{{ loggedusr }}</span> <button class="btn btn-light" ng-click="getMyBkms(1)">
 
@@ -48,17 +50,18 @@
         <div id="divlogged" class="row" ng-show="logged">
             <div class="col-md-8">
                 <h3>Elenco bookmarks </h3>
+                 <img src="img/Segnalibri.jpg" style="width:30%" height="100"/>
 
                 <table class="table table-responsive table-bordered">
                     <tr>
                         <th>link</th>
-                        <th>owner</th>
+                        <th>Author</th>
                         <th>description</th>
                         <th>url</th>
                     </tr>
                     <tr ng-repeat="bk in bkms">
                         <td><button ng-click="viewBkm( bk.link)" class="btn btn-outline-success">Dettagli</button></td>
-                        <td>{{ bk.owner.email }}</td>
+                        <td>{{ bk.author.email }}</td>
                         <td>{{ bk.description }}</td>
                         <td>{{ bk.url }}</td>
                     </tr>
@@ -134,7 +137,6 @@
                 <div id="divinstag">
                     <h3>Inserimento Tag</h3>
                 </div>
-
             </div>
         </div>
     </div>
@@ -194,13 +196,13 @@
                 idok = idok * 1;
                 if ($scope.shared == "true") sh = true;
                 let req = {
-                    url: "http://localhost:8080/bkmapp/resources/bookmarks/" +
-                        sessionStorage.getItem("myid"), //+ "/bookmarks",
+                    url: "http://localhost:8080/bkmapp/resources/authors/" +
+                        sessionStorage.getItem("myid")+"/bookmarks",
                     method: "POST",
                     data: {
                         description: $scope.description, link: $scope.link,
                         shared:sh,
-                        owner: { id: idok }
+                        author: { id: idok }
                     },
                     headers: {
 
@@ -288,7 +290,7 @@
                 $http(req).then(
                     function (response) {   // caso successo
                         $scope.bkms = response.data;
-                        let count = response.data.count;
+                        let count = response.data.length;
                         document.getElementById("totcount").innerHTML = " (" + count + ")";
                         count = count / 5;
                         count = Math.ceil(count);
@@ -297,7 +299,7 @@
                         for (let i = 1; i <= count; i++)
                             arp.push(i)
                         $scope.np = arp;
-                        // call creaGrpah perchje' in bkms array oggetti bkm
+                        // call creaGrpah perche' in bkms array oggetti bkm
                         $scope.getALLMyBkms(count);
                         $scope.creaGraph();
 
@@ -374,7 +376,7 @@
                         let json = response.data;
                         $scope.viewdescription = json.description;
                         $scope.viewshared = json.shared;
-                        $scope.viewauthor = json.owner.email + "[id:" + json.owner.id + "]";
+                        $scope.viewauthor = json.author.email + "[id:" + json.author.id + "]";
                         $scope.viewurl = json.url;
                         $scope.viewcreated = json.created.substr(0, 10);
                         $scope.viewshow = true;

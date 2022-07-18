@@ -1,3 +1,5 @@
+/* global customElements */
+
 import Router from "./Router.js"
 export default class LoginView extends HTMLElement {
     constructor() {
@@ -7,7 +9,7 @@ export default class LoginView extends HTMLElement {
 
     connectedCallback() {
 
-        console.log("BkmTest  connectedCallBack()...");
+        console.log("BookmarkTest  connectedCallBack()...");
         this.root.innerHTML = this.render();
         const cmdLogin = this.root.querySelector("button");
         cmdLogin.addEventListener("click", e => this.onLogin(e));
@@ -17,7 +19,7 @@ export default class LoginView extends HTMLElement {
     render() {
 
         return `
-            <h1>Bkmtest web component</h1>
+            <h1>Bookmarktest web component</h1>
             <form action ="">
                 <input type="text" name="usr" id="usr">
                 <input type="password" name="pwd" id="pwd">
@@ -32,6 +34,6 @@ export default class LoginView extends HTMLElement {
 
     
 }
-    customElements.define('bkm-login', LoginView);
+    customElements.define('bookmark-login', LoginView);
 
     

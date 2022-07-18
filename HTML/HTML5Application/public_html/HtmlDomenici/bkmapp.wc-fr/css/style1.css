@@ -1,0 +1,37 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 8 lug 2022, 00:41:49
+    Author     : pc
+*/
+
+
+body{
+    background-color: lightblue;
+    
+} 
+.foto1{
+    display: inline-block;
+}
+
+.user{
+    color: red;
+    font-family: Arial;
+    
+}
+
+#loggeduser{
+    color: green;
+}
+
+form{
+    background-color: lightgreen;
+    padding-top: 30px;
+    font-size: 30px;
+}
+form div {
+    text-align: center;
+    font-size: 40px;
+}

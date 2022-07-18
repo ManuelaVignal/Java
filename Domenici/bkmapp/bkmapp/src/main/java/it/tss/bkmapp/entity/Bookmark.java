@@ -22,13 +22,16 @@ import javax.validation.constraints.NotBlank;
  *
  * @author pc
  */
+
 @Entity
 @Table(name = "bookmark")
 public class Bookmark extends BaseEntity {
+    
+   
 
     @NotBlank
-    @Column(nullable = false) 
-    private String descrizione;
+    @Column(name="descrizione",nullable = false) 
+    private String description;
 
     @NotBlank
     @Column(name = "link", nullable = false)
@@ -47,12 +50,12 @@ public class Bookmark extends BaseEntity {
     @JoinColumn(name = "proprietario")
     private Author author;
 
-    public String getDescrizione() {
-        return descrizione;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
+    public void setDescription(String descrizione) {
+        this.description = descrizione;
     }
 
     public String getLink() {
@@ -89,7 +92,7 @@ public class Bookmark extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Bookmark{" + "id =" + id + "descrizione=" + descrizione + ", link=" + link + ", etichette=" + etichette + ", shared=" + shared + ", author=" + author + '}';
+        return "Bookmark{" + "id =" + id + "descrizione=" + description + ", link=" + link + ", etichette=" + etichette + ", shared=" + shared + ", author=" + author + '}';
     }
 
 }

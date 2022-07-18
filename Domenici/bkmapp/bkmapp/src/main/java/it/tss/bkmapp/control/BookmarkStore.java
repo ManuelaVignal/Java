@@ -54,6 +54,22 @@ public class BookmarkStore {
         Bookmark saved = em.merge(entity);
         return saved;
     }
+      public Bookmark update(Long id,Bookmark entity) {
+          Optional <Bookmark> find_entity=find(id);
+          if (find_entity.isPresent()){
+              Bookmark bookmark=find_entity.get();
+              bookmark.setDescription(entity.getDescription());
+              bookmark.setEtichette(entity.getEtichette());
+              bookmark.setLink(entity.getLink());
+              bookmark.setShared(entity.isShared());
+              em.merge(bookmark);
+              return bookmark;
+              
+              
+                }else throw new RuntimeException("bookmark non trovato");
+          
+       
+    }
 
     public void addEtichetta(Bookmark found, String etichetta) {
         Bookmark toupdate = find(found.getId()).get();

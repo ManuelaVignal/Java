@@ -121,7 +121,7 @@ public class AuthorsResource {
                 .entity(saved)
                 .build();
     }
-    //il token passa a zero se non faccio questo metodoto option ed il programma va in errore
+    //il token passa a zero se non faccio questo metodo option ed il programma va in errore
 
     @Path("{id}")
     @RolesAllowed("authors")

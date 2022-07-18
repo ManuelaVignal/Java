@@ -1,3 +1,5 @@
+/* global customElements */
+
 export default class HomeView extends HTMLElement{
      
 
@@ -12,4 +14,4 @@ export default class HomeView extends HTMLElement{
         `
     }
 }
-customElements.define("bkm-home",HomeView);
+customElements.define("bookmark-home",HomeView);
