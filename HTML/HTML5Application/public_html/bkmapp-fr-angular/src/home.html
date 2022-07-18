@@ -57,13 +57,13 @@
                         <th>link</th>
                         <th>Author</th>
                         <th>description</th>
-                        <th>url</th>
+                        <th>link</th>
                     </tr>
                     <tr ng-repeat="bk in bkms">
                         <td><button ng-click="viewBkm( bk.link)" class="btn btn-outline-success">Dettagli</button></td>
                         <td>{{ bk.author.email }}</td>
                         <td>{{ bk.description }}</td>
-                        <td>{{ bk.url }}</td>
+                        <td>{{ bk.link }}</td>
                     </tr>
                 </table>
                 <!--   paginatore  -->
@@ -81,14 +81,14 @@
                             <td>Description</td>
                             <th>Created</th>
                             <th>Author</th>
-                            <th>Url</th>
+                            <th>Link</th>
                             <th>Shared</th>
                         </tr>
                         <tr>
                             <td>{{ viewdescription }}</td>
                             <td>{{ viewcreated }}</td>
                             <td>{{ viewauthor }}</td>
-                            <td>{{ viewurl }}</td>
+                            <td>{{ viewlink}}</td>
                             <td>{{ viewshared }}</td>
                         </tr>
                     </table>
@@ -105,9 +105,9 @@
                             <span ng-show="fbkm.description.$error.required">campo richiesto</span>
                         </div>
                         <div class="form-group">
-                            <label for="url">Url:</label>
-                            <input ng-model="link" required type="text" class="form-control" id="url"
-                                placeholder="Enter url" name="url">
+                            <label for="link">Link:</label>
+                            <input ng-model="link" required type="text" class="form-control" id="link"
+                                placeholder="Enter link" name="link">
                             <span ng-show="fbkm.link.$error.required">campo richiesto</span>
                         </div>
                         <div class="form-check-inline">
@@ -377,7 +377,7 @@
                         $scope.viewdescription = json.description;
                         $scope.viewshared = json.shared;
                         $scope.viewauthor = json.author.email + "[id:" + json.author.id + "]";
-                        $scope.viewurl = json.url;
+                        $scope.viewlink = json.link;
                         $scope.viewcreated = json.created.substr(0, 10);
                         $scope.viewshow = true;
 
